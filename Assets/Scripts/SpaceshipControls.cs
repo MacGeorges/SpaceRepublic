@@ -13,7 +13,7 @@ public class SpaceshipControls : MonoBehaviour
 
     [Header("Input parameters")]
     public float deadZone;
-
+    public float speedLimit;
 
     [Header ("Debug Inputs")]
     public bool forwardButton;
@@ -31,6 +31,7 @@ public class SpaceshipControls : MonoBehaviour
     public bool pinchUp;
 
     public Vector2 mousePosition;
+    public Vector2 mouseWheel;
 
     public static SpaceshipControls instance;
 
@@ -87,6 +88,11 @@ public class SpaceshipControls : MonoBehaviour
     public void MousePosition(InputAction.CallbackContext context)
     {
         mousePosition = context.ReadValue<Vector2>();
+    }
+
+    public void MouseWheel(InputAction.CallbackContext context)
+    {
+        mouseWheel = context.ReadValue<Vector2>();
     }
 
     private void ClearMouseInputs()
@@ -162,5 +168,20 @@ public class SpaceshipControls : MonoBehaviour
         thrustersManager.ThrustersYawRight(yawRight, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)));
         thrustersManager.ThrustersPinchDown(pinchDown, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)));
         thrustersManager.ThrustersPinchUp(pinchUp, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)));
+
+        //Mouse Wheel
+        if (mouseWheel.y > 0)
+        {
+            speedLimit += 0.1f;
+            if (speedLimit > 1) { speedLimit = 1; }
+        }
+        if (mouseWheel.y < 0)
+        {
+            speedLimit -= 0.1f;
+            if (speedLimit < 0) { speedLimit = 0; }
+        }
+
+        UIManager.instance.speedLimiter.value = speedLimit;
+
     }
 }

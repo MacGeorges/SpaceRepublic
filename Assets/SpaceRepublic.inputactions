@@ -842,6 +842,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SpeedLimiter",
+                    "type": "Value",
+                    "id": "37b830c7-cddd-4eae-b482-604f15eba08f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -952,6 +960,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "SpaceBreak",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "18769d12-16c4-4242-a86e-d88b6f3aa84d",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "SpeedLimiter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4362664286192461949}
   - component: {fileID: 7197935851027167487}
   - component: {fileID: 5334569038088024186}
-  - component: {fileID: 219256648094164572}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &219256648094164572
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4355682497776430824}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6575476278948415199
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +133,7 @@ MonoBehaviour:
   thrusterFireMaterial: {fileID: 2100000, guid: 48fdb360ed6211f419517c4a4b1809a6,
     type: 2}
   constantForceComponent: {fileID: 8266321686424726828}
+  actuators: 
 --- !u!54 &667362206895199678
 Rigidbody:
   m_ObjectHideFlags: 0
