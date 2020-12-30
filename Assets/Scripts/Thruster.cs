@@ -25,7 +25,7 @@ public class Thruster : MonoBehaviour
             actuators.Add(addingDirection);
             GetComponentInChildren<MeshRenderer>().material = thrusterFireMaterial;
 
-            constantForceComponent.relativeForce = new Vector3(0, 0, -1);
+            constantForceComponent.relativeForce = new Vector3(0, 0, -1 * thrusterForce);
         }
     }
 

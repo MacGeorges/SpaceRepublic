@@ -834,6 +834,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SpaceBreak",
+                    "type": "Button",
+                    "id": "380640b9-7cc1-45d9-81f2-48eeb128d7bb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -933,6 +941,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Mouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85d11832-c59d-4b54-8549-1f5558e61a19",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "SpaceBreak",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
