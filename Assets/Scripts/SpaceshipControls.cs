@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public enum Direction { forward, backward, SlideUp, SlideDown, SlideLeft, SlideRight, RollLeft, RollRight, YawLeft, YawRight, PinchUp, PinchDown}
 
+public struct Actuator { public Direction direction; public float force; }
+
 public class SpaceshipControls : MonoBehaviour
 {
     public ThrustersManager thrustersManager;

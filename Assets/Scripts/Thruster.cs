@@ -18,20 +18,20 @@ public class Thruster : MonoBehaviour
     [SerializeField]
     private List<Direction> actuators;
 
-    public void AddActuator(Direction addingDirection)
+    public void AddActuator(Actuator addingActuator)
     {
-        if (!actuators.Contains(addingDirection))
+        if (!actuators.Contains(addingActuator.direction))
         {
-            actuators.Add(addingDirection);
+            actuators.Add(addingActuator.direction);
             GetComponentInChildren<MeshRenderer>().material = thrusterFireMaterial;
 
-            constantForceComponent.relativeForce = new Vector3(0, 0, -1 * thrusterForce);
+            constantForceComponent.relativeForce = new Vector3(0, 0, -1 * thrusterForce * addingActuator.force);
         }
     }
 
-    public void RemoveActuator(Direction removingDirection)
+    public void RemoveActuator(Actuator removingActuator)
     {
-        actuators.Remove(removingDirection);
+        actuators.Remove(removingActuator.direction);
 
         if(actuators.Count == 0)
         {

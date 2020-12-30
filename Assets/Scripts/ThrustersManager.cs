@@ -40,17 +40,21 @@ public class ThrustersManager : MonoBehaviour
 
         thrusterPositions.Add(Position.rear);
 
+        Actuator tmpAct;
+        tmpAct.direction = Direction.backward;
+        tmpAct.force = 1;
+
         foreach (Thruster tmpThruster in thrusters)
         {
             if(Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
                 if(Enable)
                 {
-                    tmpThruster.AddActuator(Direction.backward);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.backward);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -62,17 +66,21 @@ public class ThrustersManager : MonoBehaviour
 
         thrusterPositions.Add(Position.front);
 
+        Actuator tmpAct;
+        tmpAct.direction = Direction.forward;
+        tmpAct.force = 1;
+
         foreach (Thruster tmpThruster in thrusters)
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.forward);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.forward);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -84,17 +92,21 @@ public class ThrustersManager : MonoBehaviour
 
         thrusterPositions.Add(Position.bottom);
 
+        Actuator tmpAct;
+        tmpAct.direction = Direction.SlideUp;
+        tmpAct.force = 1;
+
         foreach (Thruster tmpThruster in thrusters)
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.SlideUp);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.SlideUp);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -106,17 +118,21 @@ public class ThrustersManager : MonoBehaviour
 
         thrusterPositions.Add(Position.top);
 
+        Actuator tmpAct;
+        tmpAct.direction = Direction.SlideDown;
+        tmpAct.force = 1;
+
         foreach (Thruster tmpThruster in thrusters)
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.SlideUp);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.SlideUp);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -129,17 +145,21 @@ public class ThrustersManager : MonoBehaviour
         thrusterPositions.Add(Position.tip);
         thrusterPositions.Add(Position.right);
 
+        Actuator tmpAct;
+        tmpAct.direction = Direction.SlideLeft;
+        tmpAct.force = 1;
+
         foreach (Thruster tmpThruster in thrusters)
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.SlideLeft);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.SlideLeft);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -152,17 +172,21 @@ public class ThrustersManager : MonoBehaviour
         thrusterPositions.Add(Position.tip);
         thrusterPositions.Add(Position.left);
 
+        Actuator tmpAct;
+        tmpAct.direction = Direction.SlideRight;
+        tmpAct.force = 1;
+
         foreach (Thruster tmpThruster in thrusters)
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.SlideRight);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.SlideRight);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -175,17 +199,21 @@ public class ThrustersManager : MonoBehaviour
         thrusterPositions.Add(Position.top);
         thrusterPositions.Add(Position.left);
 
+        Actuator tmpAct;
+        tmpAct.direction = Direction.RollLeft;
+        tmpAct.force = 1;
+
         foreach (Thruster tmpThruster in thrusters)
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.RollLeft);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.RollLeft);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -201,11 +229,11 @@ public class ThrustersManager : MonoBehaviour
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.RollLeft);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.RollLeft);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -217,6 +245,10 @@ public class ThrustersManager : MonoBehaviour
 
         thrusterPositions.Add(Position.top);
         thrusterPositions.Add(Position.right);
+        
+        Actuator tmpAct;
+        tmpAct.direction = Direction.RollRight;
+        tmpAct.force = 1;
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -224,11 +256,11 @@ public class ThrustersManager : MonoBehaviour
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.RollRight);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.RollRight);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }   
             }
         }
@@ -244,11 +276,11 @@ public class ThrustersManager : MonoBehaviour
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.RollRight);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.RollRight);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -262,17 +294,21 @@ public class ThrustersManager : MonoBehaviour
         thrusterPositions.Add(Position.left);
         thrusterPositions.Add(Position.tip);
 
+        Actuator tmpAct;
+        tmpAct.direction = Direction.YawLeft;
+        tmpAct.force = 1;
+
         foreach (Thruster tmpThruster in thrusters)
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.YawLeft);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.YawLeft);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -289,11 +325,11 @@ public class ThrustersManager : MonoBehaviour
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.YawLeft);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.YawLeft);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -307,17 +343,21 @@ public class ThrustersManager : MonoBehaviour
         thrusterPositions.Add(Position.right);
         thrusterPositions.Add(Position.tip);
 
+        Actuator tmpAct;
+        tmpAct.direction = Direction.YawRight;
+        tmpAct.force = 1;
+
         foreach (Thruster tmpThruster in thrusters)
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.YawRight);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.YawRight);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -334,11 +374,11 @@ public class ThrustersManager : MonoBehaviour
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.YawRight);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.YawRight);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -351,17 +391,21 @@ public class ThrustersManager : MonoBehaviour
         thrusterPositions.Add(Position.top);
         thrusterPositions.Add(Position.forward);
 
+        Actuator tmpAct;
+        tmpAct.direction = Direction.PinchDown;
+        tmpAct.force = 1;
+
         foreach (Thruster tmpThruster in thrusters)
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.PinchDown);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.PinchDown);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -377,11 +421,11 @@ public class ThrustersManager : MonoBehaviour
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.PinchDown);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.PinchDown);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -394,17 +438,21 @@ public class ThrustersManager : MonoBehaviour
         thrusterPositions.Add(Position.forward);
         thrusterPositions.Add(Position.bottom);
 
+        Actuator tmpAct;
+        tmpAct.direction = Direction.PinchUp;
+        tmpAct.force = 1;
+
         foreach (Thruster tmpThruster in thrusters)
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.PinchUp);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.PinchUp);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
@@ -420,11 +468,11 @@ public class ThrustersManager : MonoBehaviour
             {
                 if (Enable)
                 {
-                    tmpThruster.AddActuator(Direction.PinchUp);
+                    tmpThruster.AddActuator(tmpAct);
                 }
                 else
                 {
-                    tmpThruster.RemoveActuator(Direction.PinchUp);
+                    tmpThruster.RemoveActuator(tmpAct);
                 }
             }
         }
