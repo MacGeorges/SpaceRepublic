@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public enum Direction { forward, backward, SlideUp, SlideDown, SlideLeft, SlideRight, RollLeft, RollRight, YawLeft, YawRight, PinchUp, PinchDown}
 
-public struct Actuator { public Direction direction; public float force; }
+public struct Actuator { public Direction direction; public float force; public bool boost; }
 
 public class SpaceshipControls : MonoBehaviour
 {
@@ -29,6 +29,8 @@ public class SpaceshipControls : MonoBehaviour
     public bool yawRight;
     public bool pinchDown;
     public bool pinchUp;
+
+    public bool boost;
 
     public Vector2 mousePosition;
     public Vector2 mouseWheel;
@@ -84,7 +86,13 @@ public class SpaceshipControls : MonoBehaviour
     {
         //GetComponent<Rigidbody>().isKinematic = context.ReadValueAsButton();
 
-        SpaceshipGyroscope.instance.lockedMode = context.ReadValueAsButton();
+        //SpaceshipGyroscope.instance.lockedMode = context.ReadValueAsButton();
+        SpaceshipGyroscope.instance.ToggleLockedMode();
+    }
+
+    public void Boost(InputAction.CallbackContext context)
+    {
+        boost = context.ReadValueAsButton();
     }
 
     public void MousePosition(InputAction.CallbackContext context)
@@ -140,20 +148,42 @@ public class SpaceshipControls : MonoBehaviour
 
     private void Update()
     {
-        if(SpaceshipGyroscope.instance.lockedMode)
-        {
-            return;
-        }
+        //if (SpaceshipGyroscope.instance.lockedMode)
+        //{
+        //    return;
+        //}
 
         //Keyboard
-        thrustersManager.ThrustersForward(forwardButton, 1);
-        thrustersManager.ThrustersBackward(backwarddButton, 1);
-        thrustersManager.ThrustersSlideUp(upButton, 1);
-        thrustersManager.ThrustersSlideDown(downButton, 1);
-        thrustersManager.ThrustersSlideLeft(leftButton, 1);
-        thrustersManager.ThrustersSlideRight(rightButton, 1);
-        thrustersManager.ThrustersRollLeft(rollLeftButton, 1);
-        thrustersManager.ThrustersRollRight(rollRightButton, 1);
+        if (SpaceshipGyroscope.instance.lockedMode)
+        {
+            if (forwardButton)
+                thrustersManager.ThrustersForward(forwardButton, 1, boost);
+            if (backwarddButton)
+                thrustersManager.ThrustersBackward(backwarddButton, 1, boost);
+            if (upButton)
+                thrustersManager.ThrustersSlideUp(upButton, 1, boost);
+            if (downButton)
+                thrustersManager.ThrustersSlideDown(downButton, 1, boost);
+            if (leftButton)
+                thrustersManager.ThrustersSlideLeft(leftButton, 1, boost);
+            if (rightButton)
+                thrustersManager.ThrustersSlideRight(rightButton, 1, boost);
+            if (rollLeftButton)
+                thrustersManager.ThrustersRollLeft(rollLeftButton, 1, boost);
+            if (rollRightButton)
+                thrustersManager.ThrustersRollRight(rollRightButton, 1, boost);
+        }
+        else
+        {
+            thrustersManager.ThrustersForward(forwardButton, 1, boost);
+            thrustersManager.ThrustersBackward(backwarddButton, 1, boost);
+            thrustersManager.ThrustersSlideUp(upButton, 1, boost);
+            thrustersManager.ThrustersSlideDown(downButton, 1, boost);
+            thrustersManager.ThrustersSlideLeft(leftButton, 1, boost);
+            thrustersManager.ThrustersSlideRight(rightButton, 1, boost);
+            thrustersManager.ThrustersRollLeft(rollLeftButton, 1, boost);
+            thrustersManager.ThrustersRollRight(rollRightButton, 1, boost);
+        }
 
         //Mouse
         float CursorDistance = Vector2.Distance(UIManager.instance.cursor.transform.position, new Vector2(Screen.width / 2, Screen.height / 2));
@@ -171,10 +201,25 @@ public class SpaceshipControls : MonoBehaviour
         //Debug.Log("Mouse Force X : " + Mathf.Abs(mousePosition.x - Screen.width / 2));
         //Debug.Log("Mouse Force Y : " + Mathf.Abs(mousePosition.y - Screen.height / 2));
 
-        thrustersManager.ThrustersYawLeft(yawLeft, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)));
-        thrustersManager.ThrustersYawRight(yawRight, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)));
-        thrustersManager.ThrustersPinchDown(pinchDown, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)));
-        thrustersManager.ThrustersPinchUp(pinchUp, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)));
+        if (SpaceshipGyroscope.instance.lockedMode)
+        {
+            Debug.Log("Controls PinchDown " + pinchDown);
+            if (yawLeft)
+                thrustersManager.ThrustersYawLeft(yawLeft, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)), boost);
+            if (yawRight)
+                thrustersManager.ThrustersYawRight(yawRight, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)), boost);
+            if (pinchDown)
+                thrustersManager.ThrustersPinchDown(pinchDown, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)), boost);
+            if (pinchUp)
+                thrustersManager.ThrustersPinchUp(pinchUp, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)), boost);
+        }
+        else
+        {
+            thrustersManager.ThrustersYawLeft(yawLeft, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)), boost);
+            thrustersManager.ThrustersYawRight(yawRight, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)), boost);
+            thrustersManager.ThrustersPinchDown(pinchDown, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)), boost);
+            thrustersManager.ThrustersPinchUp(pinchUp, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)), boost);
+        }
 
         //Mouse Wheel
         if (mouseWheel.y > 0)

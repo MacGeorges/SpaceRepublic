@@ -234,6 +234,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
+      propertyPath: thrusterBoostForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
       propertyPath: thrusterPositions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -257,6 +262,16 @@ PrefabInstance:
       propertyPath: thrusterPositions.Array.data[3]
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_ConnectedBody
@@ -275,6 +290,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -364,6 +384,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
+      propertyPath: thrusterBoostForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
       propertyPath: thrusterPositions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -376,6 +401,16 @@ PrefabInstance:
         type: 3}
       propertyPath: thrusterPositions.Array.data[2]
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -395,6 +430,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -455,8 +495,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.1
+  far clip plane: 10000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -482,13 +522,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134384202}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.38, z: -11.59}
+  m_LocalRotation: {x: 0.11753737, y: 0, z: 0, w: 0.99306846}
+  m_LocalPosition: {x: 0, y: 4.5, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5069681176862867064}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 13.5, y: 0, z: 0}
 --- !u!114 &134384206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,6 +712,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
+      propertyPath: thrusterBoostForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
       propertyPath: thrusterPositions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -689,6 +734,16 @@ PrefabInstance:
         type: 3}
       propertyPath: thrusterPositions.Array.data[2]
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -708,6 +763,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -797,6 +857,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
+      propertyPath: thrusterBoostForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
       propertyPath: thrusterPositions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -820,6 +885,16 @@ PrefabInstance:
       propertyPath: thrusterPositions.Array.data[3]
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_ConnectedBody
@@ -838,6 +913,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -958,6 +1038,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
+      propertyPath: thrusterBoostForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
       propertyPath: thrusterPositions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -970,6 +1055,16 @@ PrefabInstance:
         type: 3}
       propertyPath: thrusterPositions.Array.data[2]
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -989,6 +1084,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1078,6 +1178,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
+      propertyPath: thrusterBoostForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
       propertyPath: thrusterPositions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1090,6 +1195,16 @@ PrefabInstance:
         type: 3}
       propertyPath: thrusterPositions.Array.data[2]
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -1109,6 +1224,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1384,6 +1504,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
+      propertyPath: thrusterBoostForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
       propertyPath: thrusterPositions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1396,6 +1521,16 @@ PrefabInstance:
         type: 3}
       propertyPath: thrusterPositions.Array.data[2]
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -1415,6 +1550,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1803,7 +1943,12 @@ PrefabInstance:
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: thrusterForce
-      value: 10
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: thrusterBoostForce
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -1825,6 +1970,16 @@ PrefabInstance:
       propertyPath: thrusterPositions.Array.data[2]
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_ConnectedBody
@@ -1843,6 +1998,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1932,6 +2092,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
+      propertyPath: thrusterBoostForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
       propertyPath: thrusterPositions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1949,6 +2114,16 @@ PrefabInstance:
         type: 3}
       propertyPath: thrusterPositions.Array.data[2]
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -1968,6 +2143,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2084,7 +2264,12 @@ PrefabInstance:
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: thrusterForce
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: thrusterBoostForce
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -2106,6 +2291,16 @@ PrefabInstance:
       propertyPath: thrusterPositions.Array.data[2]
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_ConnectedBody
@@ -2124,6 +2319,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2209,7 +2409,12 @@ PrefabInstance:
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: thrusterForce
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: thrusterBoostForce
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -2231,6 +2436,16 @@ PrefabInstance:
       propertyPath: thrusterPositions.Array.data[2]
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_ConnectedBody
@@ -2249,6 +2464,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2822,6 +3042,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
+      propertyPath: thrusterBoostForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
       propertyPath: thrusterPositions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -2839,6 +3064,16 @@ PrefabInstance:
         type: 3}
       propertyPath: thrusterPositions.Array.data[3]
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -2858,6 +3093,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2947,6 +3187,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
+      propertyPath: thrusterBoostForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
       propertyPath: thrusterPositions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -2964,6 +3209,16 @@ PrefabInstance:
         type: 3}
       propertyPath: thrusterPositions.Array.data[2]
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -2983,6 +3238,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3550,6 +3810,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
+      propertyPath: thrusterBoostForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
       propertyPath: thrusterPositions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -3567,6 +3832,16 @@ PrefabInstance:
         type: 3}
       propertyPath: thrusterPositions.Array.data[2]
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -3586,6 +3861,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3914,6 +4194,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
+      propertyPath: thrusterBoostForce
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
       propertyPath: thrusterPositions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -3931,6 +4216,16 @@ PrefabInstance:
         type: 3}
       propertyPath: thrusterPositions.Array.data[3]
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
       objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -3950,6 +4245,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4061,7 +4361,12 @@ PrefabInstance:
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: thrusterForce
-      value: 10
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: thrusterBoostForce
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -4083,6 +4388,16 @@ PrefabInstance:
       propertyPath: thrusterPositions.Array.data[2]
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296091998669041061, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
     - target: {fileID: 5754411065336402487, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_ConnectedBody
@@ -4101,6 +4416,11 @@ PrefabInstance:
     - target: {fileID: 8266321686424726828, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: m_RelativeForce.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143935834557797860, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4484,6 +4804,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 37b830c7-cddd-4eae-b482-604f15eba08f
     m_ActionName: Spaceship/SpeedLimitUp[/Mouse/forwardButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5069681176862867068}
+        m_MethodName: Boost
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f6cdbb5b-a518-4304-be27-903b83d595d8
+    m_ActionName: Spaceship/Boost[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Spaceship
@@ -4516,6 +4851,7 @@ MonoBehaviour:
   yawRight: 0
   pinchDown: 0
   pinchUp: 0
+  boost: 0
   mousePosition: {x: 0, y: 0}
   mouseWheel: {x: 0, y: 0}
 --- !u!114 &5069681176862867069
@@ -4530,6 +4866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d0055ed2e1bdd4ba3c5cc067e8c93d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stabilizationThreshold: 0.001
   lockedMode: 0
 --- !u!1001 &7404990035278432344
 PrefabInstance:

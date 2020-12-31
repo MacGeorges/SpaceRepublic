@@ -5,7 +5,10 @@ using UnityEngine;
 public class SpaceshipGyroscope : MonoBehaviour
 {
     private Vector3 lastPosition;
+    private Vector3 lastWorldPosition;
     private Vector3 lastRotation;
+
+    public float stabilizationThreshold;
 
     public bool lockedMode;
 
@@ -19,22 +22,28 @@ public class SpaceshipGyroscope : MonoBehaviour
 
     void Update()
     {
-        if(lockedMode)
+        if (lockedMode)
         {
-            Stabilize(RecognizeMovements());
+            Stabilize();
         }
 
         UpdateTranform();
+    }
+
+    public void ToggleLockedMode()
+    {
+        lockedMode = !lockedMode;
     }
 
 
     private void UpdateTranform()
     {
         lastPosition = transform.InverseTransformDirection(transform.position);
+        lastWorldPosition = transform.position;
         lastRotation = transform.eulerAngles;
     }
 
-    private List<Direction> RecognizeMovements()
+    private void Stabilize()
     {
         Vector3 positionDelta = transform.InverseTransformDirection(transform.position) - lastPosition;
         Vector3 rotationDelta = transform.eulerAngles - lastRotation;
@@ -42,93 +51,44 @@ public class SpaceshipGyroscope : MonoBehaviour
         Debug.Log("positionDelta : " + positionDelta);
         Debug.Log("rotationDelta : " + rotationDelta);
 
-        List<Direction> returnDirections = new List<Direction>();
-
         //position
-        ThrustersManager.instance.ThrustersSlideRight((positionDelta.x < -0.00001), Mathf.Abs(positionDelta.x) * 100); //Left
-        ThrustersManager.instance.ThrustersSlideLeft((positionDelta.x > 0.00001), Mathf.Abs(positionDelta.x) * 100); //Right
-        ThrustersManager.instance.ThrustersSlideUp((positionDelta.y < -0.00001), Mathf.Abs(positionDelta.y) * 100); //Down
-        ThrustersManager.instance.ThrustersSlideDown((positionDelta.y > 0.00001), Mathf.Abs(positionDelta.y) * 100); //Up
-        ThrustersManager.instance.ThrustersForward((positionDelta.z < -0.00001), Mathf.Abs(positionDelta.z) * 100); //Backward
-        ThrustersManager.instance.ThrustersBackward((positionDelta.z > 0.00001), Mathf.Abs(positionDelta.z) * 100); //Forward
-
-        //if (positionDelta.x < -0.00001)
-        //{
-        //    Debug.Log("SlideLeft " + positionDelta.x);
-        //    returnDirections.Add(Direction.SlideLeft);
-        //}
-        //if (positionDelta.x > 0.00001)
-        //{
-        //    Debug.Log("SlideRight " + positionDelta.x);
-        //    returnDirections.Add(Direction.SlideRight);
-        //}
-        //if (positionDelta.y < -0.00001)
-        //{
-        //    Debug.Log("SlideDown " + positionDelta.y);
-        //    returnDirections.Add(Direction.SlideDown);
-        //}
-        //if (positionDelta.y > 0.00001)
-        //{
-        //    Debug.Log("SlideUp " + positionDelta.y);
-        //    returnDirections.Add(Direction.SlideUp);
-        //}
-        //if (positionDelta.z < -0.00001)
-        //{
-        //    Debug.Log("backward " + positionDelta.z);
-        //    returnDirections.Add(Direction.backward);
-        //}
-        //if (positionDelta.z > 0.00001)
-        //{
-        //    Debug.Log("forward " + positionDelta.z);
-        //    returnDirections.Add(Direction.forward);
-        //}
+        if ((transform.position - lastWorldPosition) != Vector3.zero)
+        {
+            Debug.Log("World Movement");
+            if(!SpaceshipControls.instance.leftButton)
+                ThrustersManager.instance.ThrustersSlideRight((positionDelta.x < -stabilizationThreshold), Mathf.Abs(positionDelta.x) * 10, true); //Left
+            if (!SpaceshipControls.instance.rightButton)
+                ThrustersManager.instance.ThrustersSlideLeft((positionDelta.x > stabilizationThreshold), Mathf.Abs(positionDelta.x) * 10, true); //Right
+            if (!SpaceshipControls.instance.downButton)
+                ThrustersManager.instance.ThrustersSlideUp((positionDelta.y < -stabilizationThreshold), Mathf.Abs(positionDelta.y) * 10, true); //Down
+            if (!SpaceshipControls.instance.upButton)
+                ThrustersManager.instance.ThrustersSlideDown((positionDelta.y > stabilizationThreshold), Mathf.Abs(positionDelta.y) * 10, true); //Up
+            if (!SpaceshipControls.instance.backwarddButton)
+                ThrustersManager.instance.ThrustersForward((positionDelta.z < -stabilizationThreshold), Mathf.Abs(positionDelta.z) * 10, true); //Backward
+            if (!SpaceshipControls.instance.forwardButton)
+                ThrustersManager.instance.ThrustersBackward((positionDelta.z > stabilizationThreshold), Mathf.Abs(positionDelta.z) * 10, true); //Forward
+        }
 
         //rotation
-        ThrustersManager.instance.ThrustersPinchDown((rotationDelta.x < -0.00001), Mathf.Abs(rotationDelta.x) * 100); //PinchUp
-        ThrustersManager.instance.ThrustersPinchUp((rotationDelta.x > 0.00001), Mathf.Abs(rotationDelta.x) * 100); //PinchDown
-        ThrustersManager.instance.ThrustersYawRight((rotationDelta.y < -0.00001), Mathf.Abs(rotationDelta.y) * 100); //YawLeft
-        ThrustersManager.instance.ThrustersYawLeft((rotationDelta.y > 0.00001), Mathf.Abs(rotationDelta.y) * 100); //YawRight
-        ThrustersManager.instance.ThrustersRollLeft((rotationDelta.z < -0.00001), Mathf.Abs(rotationDelta.z) * 100); //RollRight
-        ThrustersManager.instance.ThrustersRollRight((rotationDelta.z > 0.00001), Mathf.Abs(rotationDelta.z) * 100); //RollLeft
+        if (!SpaceshipControls.instance.pinchDown)
+            ThrustersManager.instance.ThrustersPinchDown((rotationDelta.x < -stabilizationThreshold), Mathf.Abs(rotationDelta.x) * 10, true); //PinchUp
+        if (!SpaceshipControls.instance.pinchUp)
+        {
+            Debug.Log("pinchDown stabilized");
 
-        //if (rotationDelta.x < -0.00001)
-        //{
-        //    Debug.Log("PinchUp " + rotationDelta.x);
-        //    returnDirections.Add(Direction.PinchUp);
-        //}
-        //if (rotationDelta.x > 0.00001)
-        //{
-        //    Debug.Log("PinchDown " + rotationDelta.x);
-        //    returnDirections.Add(Direction.PinchDown);
-        //}
-        //if (rotationDelta.y < -0.00001)
-        //{
-        //    Debug.Log("YawLeft " + rotationDelta.y);
-        //    returnDirections.Add(Direction.YawLeft);
-        //}
-        //if (rotationDelta.y > 0.00001)
-        //{
-        //    Debug.Log("YawRight " + rotationDelta.y);
-        //    returnDirections.Add(Direction.YawRight);
-        //}
-        //if (rotationDelta.z < -0.00001)
-        //{
-        //    Debug.Log("RollRight " + rotationDelta.z);
-        //    returnDirections.Add(Direction.RollRight);
-        //}
-        //if (rotationDelta.z > 0.00001)
-        //{
-        //    Debug.Log("RollLeft " + rotationDelta.z);
-        //    returnDirections.Add(Direction.RollLeft);
-        //}
-
-        Debug.Log("==================================");
-
-        return returnDirections;
-    }
-
-    private void Stabilize(List<Direction> directionsToCounter)
-    {
-
+            ThrustersManager.instance.ThrustersPinchUp((rotationDelta.x > stabilizationThreshold), Mathf.Abs(rotationDelta.x) * 10, true); //PinchDown
+        }
+        else
+        {
+            Debug.Log("pinchDown not stabilized");
+        }
+        if (!SpaceshipControls.instance.yawRight)
+            ThrustersManager.instance.ThrustersYawRight((rotationDelta.y < -stabilizationThreshold), Mathf.Abs(rotationDelta.y) * 10, true); //YawLeft
+        if (!SpaceshipControls.instance.yawLeft)
+            ThrustersManager.instance.ThrustersYawLeft((rotationDelta.y > stabilizationThreshold), Mathf.Abs(rotationDelta.y) * 10, true); //YawRight
+        if (!SpaceshipControls.instance.rollLeftButton)
+            ThrustersManager.instance.ThrustersRollLeft((rotationDelta.z < -stabilizationThreshold), Mathf.Abs(rotationDelta.z) * 10, true); //RollRight
+        if (!SpaceshipControls.instance.rollRightButton)
+            ThrustersManager.instance.ThrustersRollRight((rotationDelta.z > stabilizationThreshold), Mathf.Abs(rotationDelta.z) * 10, true); //RollLeft
     }
 }
