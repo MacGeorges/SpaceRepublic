@@ -140,6 +140,11 @@ public class SpaceshipControls : MonoBehaviour
 
     private void Update()
     {
+        if(SpaceshipGyroscope.instance.lockedMode)
+        {
+            return;
+        }
+
         //Keyboard
         thrustersManager.ThrustersForward(forwardButton, 1);
         thrustersManager.ThrustersBackward(backwarddButton, 1);

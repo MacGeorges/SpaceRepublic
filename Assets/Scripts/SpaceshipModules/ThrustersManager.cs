@@ -14,8 +14,11 @@ public class ThrustersManager : MonoBehaviour
 
     private List<ThusterUpdateInfos> thrustersInfosToUpdate;
 
+    public static ThrustersManager instance;
+
     private void Start()
     {
+        instance = this;
         InitThrusters();
     }
 
