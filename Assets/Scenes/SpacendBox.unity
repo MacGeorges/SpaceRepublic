@@ -1494,6 +1494,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
+      propertyPath: debug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
+        type: 3}
       propertyPath: thrusterType
       value: 1
       objectReference: {fileID: 0}
