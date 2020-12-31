@@ -82,7 +82,9 @@ public class SpaceshipControls : MonoBehaviour
 
     public void SpaceBreak(InputAction.CallbackContext context)
     {
-        GetComponent<Rigidbody>().isKinematic = context.ReadValueAsButton();
+        //GetComponent<Rigidbody>().isKinematic = context.ReadValueAsButton();
+
+        SpaceshipGyroscope.instance.lockedMode = context.ReadValueAsButton();
     }
 
     public void MousePosition(InputAction.CallbackContext context)
@@ -111,29 +113,29 @@ public class SpaceshipControls : MonoBehaviour
 
         if (mousePosition.x < ((Screen.width / 2) - deadZone))
         {
-            Debug.Log("left");
+            //Debug.Log("left");
             yawLeft = true;
         }
 
         if (mousePosition.x > ((Screen.width / 2) + deadZone))
         {
-            Debug.Log("right");
+            //Debug.Log("right");
             yawRight = true;
         }
 
         if (mousePosition.y < ((Screen.height / 2) - deadZone))
         {
-            Debug.Log("down");
+            //Debug.Log("down");
             pinchDown = true;
         }
 
         if (mousePosition.y > ((Screen.height / 2) + deadZone))
         {
-            Debug.Log("up");
+            //Debug.Log("up");
             pinchUp = true;
         }
 
-        Debug.Log("=========================");
+        //Debug.Log("=========================");
     }
 
     private void Update()
@@ -157,12 +159,12 @@ public class SpaceshipControls : MonoBehaviour
         }
         else
         {
-            Debug.Log("Mouse Deadzone");
+            //Debug.Log("Mouse Deadzone");
             ClearMouseInputs();
         }
 
-        Debug.Log("Mouse Force X : " + Mathf.Abs(mousePosition.x - Screen.width / 2));
-        Debug.Log("Mouse Force Y : " + Mathf.Abs(mousePosition.y - Screen.height / 2));
+        //Debug.Log("Mouse Force X : " + Mathf.Abs(mousePosition.x - Screen.width / 2));
+        //Debug.Log("Mouse Force Y : " + Mathf.Abs(mousePosition.y - Screen.height / 2));
 
         thrustersManager.ThrustersYawLeft(yawLeft, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)));
         thrustersManager.ThrustersYawRight(yawRight, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)));
