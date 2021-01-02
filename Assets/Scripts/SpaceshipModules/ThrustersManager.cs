@@ -37,7 +37,7 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersForward(bool Enable, float Force, bool boost = false)
+    public void ThrustersForward(bool Enable, float Force)
     {
         Debug.Log("Thrusters Forward");
         List<Position> thrusterPositions = new List<Position>();
@@ -47,7 +47,6 @@ public class ThrustersManager : MonoBehaviour
         Actuator tmpAct;
         tmpAct.direction = Direction.backward;
         tmpAct.force = Force;
-        tmpAct.boost = boost;
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -74,7 +73,6 @@ public class ThrustersManager : MonoBehaviour
         Actuator tmpAct;
         tmpAct.direction = Direction.forward;
         tmpAct.force = Force;
-        tmpAct.boost = boost;
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -101,7 +99,6 @@ public class ThrustersManager : MonoBehaviour
         Actuator tmpAct;
         tmpAct.direction = Direction.SlideUp;
         tmpAct.force = Force;
-        tmpAct.boost = boost;
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -128,7 +125,6 @@ public class ThrustersManager : MonoBehaviour
         Actuator tmpAct;
         tmpAct.direction = Direction.SlideDown;
         tmpAct.force = Force;
-        tmpAct.boost = boost;
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -156,7 +152,7 @@ public class ThrustersManager : MonoBehaviour
         Actuator tmpAct;
         tmpAct.direction = Direction.SlideLeft;
         tmpAct.force = Force;
-        tmpAct.boost = boost;
+        
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -184,7 +180,7 @@ public class ThrustersManager : MonoBehaviour
         Actuator tmpAct;
         tmpAct.direction = Direction.SlideRight;
         tmpAct.force = Force;
-        tmpAct.boost = boost;
+        
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -212,7 +208,7 @@ public class ThrustersManager : MonoBehaviour
         Actuator tmpAct;
         tmpAct.direction = Direction.RollLeft;
         tmpAct.force = Force;
-        tmpAct.boost = boost;
+        
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -260,7 +256,7 @@ public class ThrustersManager : MonoBehaviour
         Actuator tmpAct;
         tmpAct.direction = Direction.RollRight;
         tmpAct.force = Force;
-        tmpAct.boost = boost;
+        
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -309,7 +305,7 @@ public class ThrustersManager : MonoBehaviour
         Actuator tmpAct;
         tmpAct.direction = Direction.YawLeft;
         tmpAct.force = Force;
-        tmpAct.boost = boost;
+        
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -359,7 +355,7 @@ public class ThrustersManager : MonoBehaviour
         Actuator tmpAct;
         tmpAct.direction = Direction.YawRight;
         tmpAct.force = Force;
-        tmpAct.boost = boost;
+        
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -409,7 +405,7 @@ public class ThrustersManager : MonoBehaviour
         Actuator tmpAct;
         tmpAct.direction = Direction.PinchDown;
         tmpAct.force = Force;
-        tmpAct.boost = boost;
+        
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -457,7 +453,7 @@ public class ThrustersManager : MonoBehaviour
         Actuator tmpAct;
         tmpAct.direction = Direction.PinchUp;
         tmpAct.force = Force;
-        tmpAct.boost = boost;
+        
 
         foreach (Thruster tmpThruster in thrusters)
         {

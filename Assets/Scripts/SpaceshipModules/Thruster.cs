@@ -90,9 +90,14 @@ public class Thruster : MonoBehaviour
 
         foreach (Actuator tmpAct in actuators)
         {
-            returnForce += tmpAct.force;
-            if (tmpAct.boost)
-                tmpBoost = true;
+            if (SpaceshipControls.instance.boost)
+            {
+                returnForce += thrusterBoostForce;
+            }
+            else
+            {
+                returnForce += tmpAct.force;
+            }
         }
 
         boosting = tmpBoost;
