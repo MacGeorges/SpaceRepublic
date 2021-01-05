@@ -9,14 +9,13 @@ public struct ThusterUpdateInfos { public List<Position> thrusterPositions; }
 
 public class ThrustersManager : MonoBehaviour
 {
-    [SerializeField]
-    private List<Thruster> thrusters;
+    public List<Thruster> thrusters;
 
     private List<ThusterUpdateInfos> thrustersInfosToUpdate;
 
     public static ThrustersManager instance;
 
-    private void Start()
+    void Start()
     {
         instance = this;
         InitThrusters();
@@ -37,16 +36,14 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersForward(bool Enable, float Force)
+    public void ThrustersForward(Initiator initiator, bool Enable, float Force)
     {
-        Debug.Log("Thrusters Forward");
+        //Debug.Log("Thrusters Forward");
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.rear);
 
-        Actuator tmpAct;
-        tmpAct.direction = Direction.backward;
-        tmpAct.force = Force;
+        Actuator tmpAct = new Actuator(initiator, Direction.backward, Force);
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -64,15 +61,13 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersBackward(bool Enable, float Force, bool boost = false)
+    public void ThrustersBackward(Initiator initiator, bool Enable, float Force)
     {
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.front);
 
-        Actuator tmpAct;
-        tmpAct.direction = Direction.forward;
-        tmpAct.force = Force;
+        Actuator tmpAct = new Actuator(initiator, Direction.forward, Force);
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -90,15 +85,13 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersSlideUp(bool Enable, float Force, bool boost = false)
+    public void ThrustersSlideUp(Initiator initiator, bool Enable, float Force)
     {
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.bottom);
 
-        Actuator tmpAct;
-        tmpAct.direction = Direction.SlideUp;
-        tmpAct.force = Force;
+        Actuator tmpAct = new Actuator(initiator, Direction.SlideUp, Force);
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -116,15 +109,13 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersSlideDown(bool Enable, float Force, bool boost = false)
+    public void ThrustersSlideDown(Initiator initiator, bool Enable, float Force)
     {
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.top);
 
-        Actuator tmpAct;
-        tmpAct.direction = Direction.SlideDown;
-        tmpAct.force = Force;
+        Actuator tmpAct = new Actuator(initiator, Direction.SlideDown, Force);
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -142,17 +133,14 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersSlideLeft(bool Enable, float Force, bool boost = false)
+    public void ThrustersSlideLeft(Initiator initiator, bool Enable, float Force)
     {
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.tip);
         thrusterPositions.Add(Position.right);
 
-        Actuator tmpAct;
-        tmpAct.direction = Direction.SlideLeft;
-        tmpAct.force = Force;
-        
+        Actuator tmpAct = new Actuator(initiator, Direction.SlideLeft, Force);       
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -170,17 +158,14 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersSlideRight(bool Enable, float Force, bool boost = false)
+    public void ThrustersSlideRight(Initiator initiator, bool Enable, float Force)
     {
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.tip);
         thrusterPositions.Add(Position.left);
 
-        Actuator tmpAct;
-        tmpAct.direction = Direction.SlideRight;
-        tmpAct.force = Force;
-        
+        Actuator tmpAct = new Actuator(initiator, Direction.SlideRight, Force);
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -198,17 +183,14 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersRollLeft(bool Enable, float Force, bool boost = false)
+    public void ThrustersRollLeft(Initiator initiator, bool Enable, float Force)
     {
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.top);
         thrusterPositions.Add(Position.left);
 
-        Actuator tmpAct;
-        tmpAct.direction = Direction.RollLeft;
-        tmpAct.force = Force;
-        
+        Actuator tmpAct = new Actuator(initiator, Direction.RollLeft, Force);    
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -246,17 +228,14 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersRollRight(bool Enable, float Force, bool boost = false)
+    public void ThrustersRollRight(Initiator initiator, bool Enable, float Force)
     {
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.top);
         thrusterPositions.Add(Position.right);
         
-        Actuator tmpAct;
-        tmpAct.direction = Direction.RollRight;
-        tmpAct.force = Force;
-        
+        Actuator tmpAct = new Actuator(initiator, Direction.RollRight, Force);      
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -294,7 +273,7 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersYawLeft(bool Enable, float Force, bool boost = false)
+    public void ThrustersYawLeft(Initiator initiator, bool Enable, float Force)
     {
         List<Position> thrusterPositions = new List<Position>();
 
@@ -302,10 +281,7 @@ public class ThrustersManager : MonoBehaviour
         thrusterPositions.Add(Position.left);
         thrusterPositions.Add(Position.tip);
 
-        Actuator tmpAct;
-        tmpAct.direction = Direction.YawLeft;
-        tmpAct.force = Force;
-        
+        Actuator tmpAct = new Actuator(initiator, Direction.YawLeft, Force);    
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -344,7 +320,7 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersYawRight(bool Enable, float Force, bool boost = false)
+    public void ThrustersYawRight(Initiator initiator, bool Enable, float Force)
     {
         List<Position> thrusterPositions = new List<Position>();
 
@@ -352,10 +328,7 @@ public class ThrustersManager : MonoBehaviour
         thrusterPositions.Add(Position.right);
         thrusterPositions.Add(Position.tip);
 
-        Actuator tmpAct;
-        tmpAct.direction = Direction.YawRight;
-        tmpAct.force = Force;
-        
+        Actuator tmpAct = new Actuator(initiator, Direction.YawRight, Force);
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -394,18 +367,14 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersPinchDown(bool Enable, float Force, bool boost = false)
+    public void ThrustersPinchDown(Initiator initiator, bool Enable, float Force)
     {
-        Debug.Log("ThrustersPinchDown " + Enable + " - " + Force);
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.top);
         thrusterPositions.Add(Position.forward);
 
-        Actuator tmpAct;
-        tmpAct.direction = Direction.PinchDown;
-        tmpAct.force = Force;
-        
+        Actuator tmpAct = new Actuator(initiator, Direction.PinchDown, Force);
 
         foreach (Thruster tmpThruster in thrusters)
         {
@@ -443,17 +412,14 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersPinchUp(bool Enable, float Force, bool boost = false)
+    public void ThrustersPinchUp(Initiator initiator, bool Enable, float Force)
     {
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.forward);
         thrusterPositions.Add(Position.bottom);
 
-        Actuator tmpAct;
-        tmpAct.direction = Direction.PinchUp;
-        tmpAct.force = Force;
-        
+        Actuator tmpAct = new Actuator(initiator, Direction.PinchUp, Force);     
 
         foreach (Thruster tmpThruster in thrusters)
         {

@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 
 public enum Direction { forward, backward, SlideUp, SlideDown, SlideLeft, SlideRight, RollLeft, RollRight, YawLeft, YawRight, PinchUp, PinchDown}
 
-public struct Actuator { public Direction direction; public float force; }
-
 public class SpaceshipControls : MonoBehaviour
 {
     public ThrustersManager thrustersManager;
 
     [Header("Input parameters")]
+    public bool Mouse;
+    public bool Keyboard;
     public float deadZone;
     public float speedLimit;
 
@@ -161,74 +161,42 @@ public class SpaceshipControls : MonoBehaviour
         //}
 
         //Keyboard
-        if (SpaceshipGyroscope.instance.lockedMode)
+        if (Keyboard)
         {
-            if (forwardButton)
-                thrustersManager.ThrustersForward(forwardButton, 1);
-            if (backwarddButton)
-                thrustersManager.ThrustersBackward(backwarddButton, 1);
-            if (upButton)
-                thrustersManager.ThrustersSlideUp(upButton, 1);
-            if (downButton)
-                thrustersManager.ThrustersSlideDown(downButton, 1);
-            if (leftButton)
-                thrustersManager.ThrustersSlideLeft(leftButton, 1);
-            if (rightButton)
-                thrustersManager.ThrustersSlideRight(rightButton, 1);
-            if (rollLeftButton)
-                thrustersManager.ThrustersRollLeft(rollLeftButton, 1);
-            if (rollRightButton)
-                thrustersManager.ThrustersRollRight(rollRightButton, 1);
-        }
-        else
-        {
-            thrustersManager.ThrustersForward(forwardButton, 1);
-            thrustersManager.ThrustersBackward(backwarddButton, 1);
-            thrustersManager.ThrustersSlideUp(upButton, 1);
-            thrustersManager.ThrustersSlideDown(downButton, 1);
-            thrustersManager.ThrustersSlideLeft(leftButton, 1);
-            thrustersManager.ThrustersSlideRight(rightButton, 1);
-            thrustersManager.ThrustersRollLeft(rollLeftButton, 1);
-            thrustersManager.ThrustersRollRight(rollRightButton, 1);
+            thrustersManager.ThrustersForward(Initiator.User, forwardButton, 1); ;
+            thrustersManager.ThrustersBackward(Initiator.User, backwarddButton, 1);
+            thrustersManager.ThrustersSlideUp(Initiator.User, upButton, 1);
+            thrustersManager.ThrustersSlideDown(Initiator.User, downButton, 1);
+            thrustersManager.ThrustersSlideLeft(Initiator.User, leftButton, 1);
+            thrustersManager.ThrustersSlideRight(Initiator.User, rightButton, 1);
+            thrustersManager.ThrustersRollLeft(Initiator.User, rollLeftButton, 1);
+            thrustersManager.ThrustersRollRight(Initiator.User, rollRightButton, 1);
         }
 
         //Mouse
         //Debug.Log("Mouse Force X : " + Mathf.Abs(mousePosition.x - Screen.width / 2));
         //Debug.Log("Mouse Force Y : " + Mathf.Abs(mousePosition.y - Screen.height / 2));
+        if(Mouse)
+        { 
+            thrustersManager.ThrustersYawLeft(Initiator.User, yawLeft, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)));
+            thrustersManager.ThrustersYawRight(Initiator.User, yawRight, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)));
+            thrustersManager.ThrustersPinchDown(Initiator.User, pinchDown, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)));
+            thrustersManager.ThrustersPinchUp(Initiator.User, pinchUp, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)));
 
-        if (SpaceshipGyroscope.instance.lockedMode)
-        {
-            Debug.Log("Controls PinchDown " + pinchDown);
-            if (yawLeft)
-                thrustersManager.ThrustersYawLeft(yawLeft, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)));
-            if (yawRight)
-                thrustersManager.ThrustersYawRight(yawRight, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)));
-            if (pinchDown)
-                thrustersManager.ThrustersPinchDown(pinchDown, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)));
-            if (pinchUp)
-                thrustersManager.ThrustersPinchUp(pinchUp, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)));
-        }
-        else
-        {
-            thrustersManager.ThrustersYawLeft(yawLeft, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)));
-            thrustersManager.ThrustersYawRight(yawRight, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)));
-            thrustersManager.ThrustersPinchDown(pinchDown, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)));
-            thrustersManager.ThrustersPinchUp(pinchUp, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)));
-        }
 
-        //Mouse Wheel
-        if (mouseWheel.y > 0)
-        {
-            speedLimit += 0.1f;
-            if (speedLimit > 1) { speedLimit = 1; }
-        }
-        if (mouseWheel.y < 0)
-        {
-            speedLimit -= 0.1f;
-            if (speedLimit < 0) { speedLimit = 0; }
-        }
+            //Mouse Wheel
+            if (mouseWheel.y > 0)
+            {
+                speedLimit += 0.1f;
+                if (speedLimit > 1) { speedLimit = 1; }
+            }
+            if (mouseWheel.y < 0)
+            {
+                speedLimit -= 0.1f;
+                if (speedLimit < 0) { speedLimit = 0; }
+            }
 
-        UIManager.instance.speedLimiter.value = speedLimit;
-
+            UIManager.instance.speedLimiter.value = speedLimit;
+        }
     }
 }

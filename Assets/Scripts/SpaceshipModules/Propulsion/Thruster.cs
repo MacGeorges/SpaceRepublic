@@ -21,11 +21,10 @@ public class Thruster : MonoBehaviour
 
     public bool debug;
 
-    [SerializeField]
-    private bool boosting;
+    public List<Actuator> actuators;
 
-    [SerializeField]
-    private List<Actuator> actuators;
+    //Debug
+    public int nbActuators;
 
     private void Start()
     {
@@ -36,9 +35,6 @@ public class Thruster : MonoBehaviour
     {
         if (actuators.FindAll(a => a.direction == addingActuator.direction).Count == 0)//!actuators.Contains(addingActuator))
         {
-            if (debug)
-                Debug.Log("Add Actuator " + addingActuator.direction);
-
             actuators.Add(addingActuator);
             GetComponentInChildren<MeshRenderer>().material = thrusterFireMaterial;
         }
@@ -46,15 +42,9 @@ public class Thruster : MonoBehaviour
 
     public void RemoveActuator(Actuator removingActuator)
     {
-        if (debug)
-        {
-            Debug.Log("Remove Actuator " + removingActuator.direction);
-            Debug.Log("Remaining Actuators " + actuators.Count);
-        }
-
         actuators.RemoveAll(a => a.direction == removingActuator.direction);
 
-        if(actuators.Count == 0)
+        if (actuators.Count == 0)
         {
             GetComponentInChildren<MeshRenderer>().material = thrusterMaterial;
             constantForceComponent.relativeForce = Vector3.zero;
@@ -63,13 +53,17 @@ public class Thruster : MonoBehaviour
 
     void Update()
     {
-        constantForceComponent.relativeForce = new Vector3(0, 0,
-            -1 * thrusterForce * GetForce() * SpaceshipControls.instance.speedLimit);
+        nbActuators = actuators.Count;
+
+        //constantForceComponent.relativeForce = new Vector3(0, 0,
+        //    -1 * thrusterForce * GetForce() * SpaceshipControls.instance.speedLimit);
+
+        constantForceComponent.relativeForce = new Vector3(0, 0, -1 * GetForce());
 
         if (debug)
         {
             Debug.Log("force : " + GetForce());
-            Debug.Log("Thruster force : " + -1 * thrusterForce * GetForce() * SpaceshipControls.instance.speedLimit);
+            Debug.Log("Thruster force : " + constantForceComponent.relativeForce.z);
             Debug.Log("=========================================");
         }
 
@@ -82,39 +76,21 @@ public class Thruster : MonoBehaviour
 
     private float GetForce()
     {
-        if (debug)
-            Debug.Log("Nb of Actuators " + actuators.Count);
-
         float returnForce = 0f;
-        bool tmpBoost = false;
 
         foreach (Actuator tmpAct in actuators)
         {
-            if (SpaceshipControls.instance.boost)
-            {
-                returnForce += thrusterBoostForce;
-            }
-            else
-            {
-                returnForce += tmpAct.force;
-            }
+            returnForce += tmpAct.force;
         }
 
-        boosting = tmpBoost;
-
-        if (boosting)
+        if (SpaceshipControls.instance.boost)
         {
-            if (returnForce > thrusterBoostForce) { returnForce = thrusterBoostForce; }
+            returnForce = thrusterBoostForce;
         }
         else
         {
             if (returnForce > thrusterForce) { returnForce = thrusterForce; }
         }
-
-        //if (actuators.Count > 0)
-        //{
-        //    returnForce = 1;
-        //}
 
         return returnForce;
     }
