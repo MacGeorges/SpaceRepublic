@@ -66,35 +66,32 @@ public class SpaceshipGyroscope : MonoBehaviour
         //position
         if ((transform.position - lastWorldPosition) != Vector3.zero)
         {
-            if(!SpaceshipControls.instance.leftButton)
+            if (!SpaceshipControls.instance.leftButton && !SpaceshipControls.instance.rightButton)
                 ThrustersManager.instance.ThrustersSlideRight(Initiator.Gyroscope, (positionDelta.x < -stabilizationThreshold), Mathf.Abs(positionDelta.x) * 10); //Left
-            if (!SpaceshipControls.instance.rightButton)
+            if (!SpaceshipControls.instance.rightButton && !SpaceshipControls.instance.leftButton)
                 ThrustersManager.instance.ThrustersSlideLeft(Initiator.Gyroscope, (positionDelta.x > stabilizationThreshold), Mathf.Abs(positionDelta.x) * 10); //Right
-            if (!SpaceshipControls.instance.downButton)
+            if (!SpaceshipControls.instance.downButton && !SpaceshipControls.instance.upButton)
                 ThrustersManager.instance.ThrustersSlideUp(Initiator.Gyroscope, (positionDelta.y < -stabilizationThreshold), Mathf.Abs(positionDelta.y) * 10); //Down
-            if (!SpaceshipControls.instance.upButton)
+            if (!SpaceshipControls.instance.upButton && !SpaceshipControls.instance.downButton)
                 ThrustersManager.instance.ThrustersSlideDown(Initiator.Gyroscope, (positionDelta.y > stabilizationThreshold), Mathf.Abs(positionDelta.y) * 10); //Up
-            if (!SpaceshipControls.instance.backwarddButton)
+            if (!SpaceshipControls.instance.backwarddButton && !SpaceshipControls.instance.forwardButton)
                 ThrustersManager.instance.ThrustersForward(Initiator.Gyroscope, (positionDelta.z < -stabilizationThreshold), Mathf.Abs(positionDelta.z) * 10); //Backward
-            if (!SpaceshipControls.instance.forwardButton)
+            if (!SpaceshipControls.instance.forwardButton && !SpaceshipControls.instance.backwarddButton)
                 ThrustersManager.instance.ThrustersBackward(Initiator.Gyroscope, (positionDelta.z > stabilizationThreshold), Mathf.Abs(positionDelta.z) * 10); //Forward
         }
 
         //rotation
-        if (!SpaceshipControls.instance.pinchDown)
+        if (!SpaceshipControls.instance.pinchDown && !SpaceshipControls.instance.pinchUp)
             ThrustersManager.instance.ThrustersPinchDown(Initiator.Gyroscope, (rotationDelta.x < -stabilizationThreshold), Mathf.Abs(rotationDelta.x) * 10); //PinchUp
-        if (!SpaceshipControls.instance.pinchUp)
-        {
-
+        if (!SpaceshipControls.instance.pinchUp && !SpaceshipControls.instance.pinchDown)
             ThrustersManager.instance.ThrustersPinchUp(Initiator.Gyroscope, (rotationDelta.x > stabilizationThreshold), Mathf.Abs(rotationDelta.x) * 10); //PinchDown
-        }
-        if (!SpaceshipControls.instance.yawRight)
+        if (!SpaceshipControls.instance.yawRight && !SpaceshipControls.instance.yawLeft)
             ThrustersManager.instance.ThrustersYawRight(Initiator.Gyroscope, (rotationDelta.y < -stabilizationThreshold), Mathf.Abs(rotationDelta.y) * 10); //YawLeft
-        if (!SpaceshipControls.instance.yawLeft)
+        if (!SpaceshipControls.instance.yawLeft && !SpaceshipControls.instance.yawRight)
             ThrustersManager.instance.ThrustersYawLeft(Initiator.Gyroscope, (rotationDelta.y > stabilizationThreshold), Mathf.Abs(rotationDelta.y) * 10); //YawRight
-        if (!SpaceshipControls.instance.rollLeftButton)
+        if (!SpaceshipControls.instance.rollLeftButton && !SpaceshipControls.instance.rollRightButton)
             ThrustersManager.instance.ThrustersRollLeft(Initiator.Gyroscope, (rotationDelta.z < -stabilizationThreshold), Mathf.Abs(rotationDelta.z) * 10); //RollRight
-        if (!SpaceshipControls.instance.rollRightButton)
+        if (!SpaceshipControls.instance.rollRightButton && !SpaceshipControls.instance.rollLeftButton)
             ThrustersManager.instance.ThrustersRollRight(Initiator.Gyroscope, (rotationDelta.z > stabilizationThreshold), Mathf.Abs(rotationDelta.z) * 10); //RollLeft
     }
 }

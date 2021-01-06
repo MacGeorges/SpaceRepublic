@@ -37,6 +37,7 @@ public class Thruster : MonoBehaviour
         {
             actuators.Add(addingActuator);
             GetComponentInChildren<MeshRenderer>().material = thrusterFireMaterial;
+            constantForceComponent.relativeForce = new Vector3(0, 0, -1);
         }
     }
 
@@ -51,7 +52,7 @@ public class Thruster : MonoBehaviour
         }
     }
 
-    void Update()
+    void UpdateLol()
     {
         nbActuators = actuators.Count;
 
