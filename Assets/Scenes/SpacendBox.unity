@@ -863,7 +863,7 @@ PrefabInstance:
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
       propertyPath: debug
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1618933540260610749, guid: ffdc60aff7e1f60469f5b6ffd451a7e0,
         type: 3}
@@ -4868,7 +4868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d0055ed2e1bdd4ba3c5cc067e8c93d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stabilizationThreshold: 0.005
+  stabilizationThreshold: 0.01
   lockedMode: 1
 --- !u!1001 &7404990035278432344
 PrefabInstance:

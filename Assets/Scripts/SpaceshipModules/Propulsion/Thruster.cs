@@ -36,8 +36,8 @@ public class Thruster : MonoBehaviour
         if (actuators.FindAll(a => a.direction == addingActuator.direction).Count == 0)//!actuators.Contains(addingActuator))
         {
             actuators.Add(addingActuator);
-            GetComponentInChildren<MeshRenderer>().material = thrusterFireMaterial;
-            constantForceComponent.relativeForce = new Vector3(0, 0, -1);
+            //GetComponentInChildren<MeshRenderer>().material = thrusterFireMaterial;
+            //constantForceComponent.relativeForce = new Vector3(0, 0, -1);
         }
     }
 
@@ -45,11 +45,11 @@ public class Thruster : MonoBehaviour
     {
         actuators.RemoveAll(a => a.direction == removingActuator.direction && a.initiator == removingActuator.initiator);
 
-        if (actuators.Count == 0)
-        {
-            GetComponentInChildren<MeshRenderer>().material = thrusterMaterial;
-            constantForceComponent.relativeForce = Vector3.zero;
-        }
+        //if (actuators.Count == 0)
+        //{
+        //    GetComponentInChildren<MeshRenderer>().material = thrusterMaterial;
+        //    constantForceComponent.relativeForce = Vector3.zero;
+        //}
     }
 
     void Update()
@@ -58,6 +58,18 @@ public class Thruster : MonoBehaviour
         {
             Debug.Log(name + " actuators : " + actuators.Count);
         }
+
+        if (actuators.Count == 0)
+        {
+            GetComponentInChildren<MeshRenderer>().material = thrusterMaterial;
+            constantForceComponent.relativeForce = Vector3.zero;
+        }
+        else
+        {
+            GetComponentInChildren<MeshRenderer>().material = thrusterFireMaterial;
+            constantForceComponent.relativeForce = new Vector3(0, 0, -GetForce());
+        }
+
 
         return;
 
@@ -91,14 +103,7 @@ public class Thruster : MonoBehaviour
             returnForce += tmpAct.force;
         }
 
-        if (SpaceshipControls.instance.boost)
-        {
-            returnForce = thrusterBoostForce;
-        }
-        else
-        {
-            if (returnForce > thrusterForce) { returnForce = thrusterForce; }
-        }
+        returnForce = Mathf.Clamp(returnForce, 0, thrusterForce);
 
         return returnForce;
     }
