@@ -14,14 +14,20 @@ public class SpaceshipGyroscope : MonoBehaviour
 
     public static SpaceshipGyroscope instance;
 
+    private Rigidbody rb;
+
     void Start()
     {
         instance = this;
+        rb = GetComponent<Rigidbody>();
+
         UpdateTranform();
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        Debug.Log("Local Velocity : " + transform.InverseTransformDirection(rb.velocity));
+
         if (lockedMode)
         {
             Stabilize();
@@ -60,8 +66,16 @@ public class SpaceshipGyroscope : MonoBehaviour
         Vector3 positionDelta = transform.InverseTransformDirection(transform.position) - lastPosition;
         Vector3 rotationDelta = transform.eulerAngles - lastRotation;
 
-        //Debug.Log("positionDelta : " + positionDelta);
+        //Debug.Log("position : " + transform.position.x + " - positionDelta : " + positionDelta.x);
+
         //Debug.Log("rotationDelta : " + rotationDelta);
+
+        //Debug.Log("World Delta : " + (transform.position - lastWorldPosition).x);
+
+
+
+        //Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
+        //Vector3 localAngularVelocity = transform.InverseTransformDirection(rb.angularVelocity);
 
         //position
         if ((transform.position - lastWorldPosition) != Vector3.zero)

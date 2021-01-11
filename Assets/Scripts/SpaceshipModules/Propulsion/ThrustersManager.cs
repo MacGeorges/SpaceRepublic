@@ -160,6 +160,8 @@ public class ThrustersManager : MonoBehaviour
 
     public void ThrustersSlideRight(Initiator initiator, bool Enable, float Force)
     {
+        //Debug.Log(Enable + " ThrustersSlideRight " + initiator);
+
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.tip);

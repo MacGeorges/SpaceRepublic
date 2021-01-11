@@ -43,7 +43,7 @@ public class Thruster : MonoBehaviour
 
     public void RemoveActuator(Actuator removingActuator)
     {
-        actuators.RemoveAll(a => a.direction == removingActuator.direction);
+        actuators.RemoveAll(a => a.direction == removingActuator.direction && a.initiator == removingActuator.initiator);
 
         if (actuators.Count == 0)
         {
@@ -52,8 +52,15 @@ public class Thruster : MonoBehaviour
         }
     }
 
-    void UpdateLol()
+    void Update()
     {
+        if(debug)
+        {
+            Debug.Log(name + " actuators : " + actuators.Count);
+        }
+
+        return;
+
         nbActuators = actuators.Count;
 
         //constantForceComponent.relativeForce = new Vector3(0, 0,
