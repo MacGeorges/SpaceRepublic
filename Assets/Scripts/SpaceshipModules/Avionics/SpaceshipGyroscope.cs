@@ -24,7 +24,7 @@ public class SpaceshipGyroscope : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log("Local Velocity : " + transform.InverseTransformDirection(rb.velocity).x);
+        //Debug.Log("Local Velocity : " + transform.InverseTransformDirection(rb.velocity).x);
 
         if (lockedMode)
         {
