@@ -178,10 +178,10 @@ public class SpaceshipControls : MonoBehaviour
         //Debug.Log("Mouse Force Y : " + Mathf.Abs(mousePosition.y - Screen.height / 2));
         if(Mouse)
         { 
-            thrustersManager.ThrustersYawLeft(Initiator.User, yawLeft, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)));
-            thrustersManager.ThrustersYawRight(Initiator.User, yawRight, (Mathf.Abs(mousePosition.x - Screen.width / 2) / (Screen.width / 2)));
-            thrustersManager.ThrustersPinchDown(Initiator.User, pinchDown, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)));
-            thrustersManager.ThrustersPinchUp(Initiator.User, pinchUp, (Mathf.Abs(mousePosition.y - Screen.height / 2) / (Screen.height / 2)));
+            thrustersManager.ThrustersYawLeft(Initiator.User, yawLeft, (Mathf.Abs(mousePosition.x - Screen.width / 2)));
+            thrustersManager.ThrustersYawRight(Initiator.User, yawRight, (Mathf.Abs(mousePosition.x - Screen.width / 2)));
+            thrustersManager.ThrustersPinchDown(Initiator.User, pinchDown, (Mathf.Abs(mousePosition.y - Screen.height / 2)));
+            thrustersManager.ThrustersPinchUp(Initiator.User, pinchUp, (Mathf.Abs(mousePosition.y - Screen.height / 2)));
 
 
             //Mouse Wheel

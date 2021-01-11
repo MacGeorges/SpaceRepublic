@@ -110,7 +110,14 @@ public class Thruster : MonoBehaviour
             }
         }
 
+        returnForce *= thrusterForce;
+
         returnForce = Mathf.Clamp(returnForce, 0, thrusterForce);
+
+        if(debug)
+        {
+            Debug.Log("return force : " + returnForce);
+        }
 
         return returnForce;
     }
