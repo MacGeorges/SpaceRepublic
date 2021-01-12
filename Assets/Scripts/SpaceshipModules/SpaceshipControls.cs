@@ -174,15 +174,16 @@ public class SpaceshipControls : MonoBehaviour
         }
 
         //Mouse
+        //Debug.Log("Mouse Force X : " + Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
+        //Debug.Log("Mouse Force Y : " + Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
         //Debug.Log("Mouse Force X : " + Mathf.Abs(mousePosition.x - Screen.width / 2));
         //Debug.Log("Mouse Force Y : " + Mathf.Abs(mousePosition.y - Screen.height / 2));
-        if(Mouse)
+        if (Mouse)
         { 
-            thrustersManager.ThrustersYawLeft(Initiator.User, yawLeft, (Mathf.Abs(mousePosition.x - Screen.width / 2)));
-            thrustersManager.ThrustersYawRight(Initiator.User, yawRight, (Mathf.Abs(mousePosition.x - Screen.width / 2)));
-            thrustersManager.ThrustersPinchDown(Initiator.User, pinchDown, (Mathf.Abs(mousePosition.y - Screen.height / 2)));
-            thrustersManager.ThrustersPinchUp(Initiator.User, pinchUp, (Mathf.Abs(mousePosition.y - Screen.height / 2)));
-
+            thrustersManager.ThrustersYawLeft(Initiator.User, yawLeft, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
+            thrustersManager.ThrustersYawRight(Initiator.User, yawRight, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
+            thrustersManager.ThrustersPinchDown(Initiator.User, pinchDown, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
+            thrustersManager.ThrustersPinchUp(Initiator.User, pinchUp, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
 
             //Mouse Wheel
             if (mouseWheel.y > 0)
