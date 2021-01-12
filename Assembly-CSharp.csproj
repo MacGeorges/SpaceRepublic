@@ -70,7 +70,9 @@
     <Compile Include="Assets\Samples\Input System\1.0.1\Simple Demo\SimpleController_UsingState.cs" />
     <Compile Include="Assets\Samples\Input System\1.0.1\Simple Demo\SimpleControls.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
+    <Compile Include="Assets\Scripts\SpaceshipAvionicsManager.cs" />
     <Compile Include="Assets\Scripts\SpaceshipModules\Avionics\SpaceshipGyroscope.cs" />
+    <Compile Include="Assets\Scripts\SpaceshipModules\Avionics\SpaceshipSpeedometer.cs" />
     <Compile Include="Assets\Scripts\SpaceshipModules\Propulsion\Actuator.cs" />
     <Compile Include="Assets\Scripts\SpaceshipModules\Propulsion\Thruster.cs" />
     <Compile Include="Assets\Scripts\SpaceshipModules\Propulsion\ThrustersManager.cs" />

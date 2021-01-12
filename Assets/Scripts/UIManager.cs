@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [Header ("UI Elements")]
     public Transform cursor;
+    public Text speedometer;
     public Slider speedLimiter;
 
     public static UIManager instance;
@@ -19,5 +20,6 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         cursor.transform.position = SpaceshipControls.instance.mousePosition;
+        speedometer.text = Mathf.Abs(SpaceshipAvionicsManager.instance.speedometer.currentSpeed).ToString("F0");
     }
 }
