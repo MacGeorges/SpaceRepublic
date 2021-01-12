@@ -33,6 +33,18 @@ public class Thruster : MonoBehaviour
 
     public void AddActuator(Actuator addingActuator)
     {
+        Actuator tmpAct = actuators.Find(a => a.direction == addingActuator.direction);
+        if (tmpAct == null)
+        {
+            actuators.Add(addingActuator);
+        }
+        else
+        {
+            tmpAct.force = addingActuator.force;
+        }
+
+        return;
+
         if (actuators.FindAll(a => a.direction == addingActuator.direction).Count == 0)//!actuators.Contains(addingActuator))
         {
             actuators.Add(addingActuator);
