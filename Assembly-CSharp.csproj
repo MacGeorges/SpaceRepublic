@@ -69,6 +69,7 @@
     <Compile Include="Assets\Samples\Input System\1.0.1\Simple Demo\SimpleController_UsingPlayerInput.cs" />
     <Compile Include="Assets\Samples\Input System\1.0.1\Simple Demo\SimpleController_UsingState.cs" />
     <Compile Include="Assets\Samples\Input System\1.0.1\Simple Demo\SimpleControls.cs" />
+    <Compile Include="Assets\Scripts\Region\Region.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\SpaceshipAvionicsManager.cs" />
     <Compile Include="Assets\Scripts\SpaceshipModules\Avionics\SpaceshipGyroscope.cs" />
@@ -615,6 +616,12 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.CacheServer">
+      <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/UnityEditor.CacheServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline.Editor">
+      <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -633,11 +640,17 @@
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.ResourceManager.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables.Editor">
+      <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.Addressables.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
@@ -654,6 +667,12 @@
     <Reference Include="Unity.VisualEffectGraph.Editor">
       <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.VisualEffectGraph.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Addressables">
+      <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.Addressables.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline">
+      <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
@@ -668,24 +687,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.CacheServer">
-      <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/UnityEditor.CacheServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ScriptableBuildPipeline.Editor">
-      <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ResourceManager">
-      <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.ResourceManager.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Addressables.Editor">
-      <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.Addressables.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Addressables">
-      <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.Addressables.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ScriptableBuildPipeline">
-      <HintPath>E:/Projects/Unity/SpaceRepublicGit/Library/ScriptAssemblies/Unity.ScriptableBuildPipeline.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
