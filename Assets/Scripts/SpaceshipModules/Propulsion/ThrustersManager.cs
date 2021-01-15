@@ -49,7 +49,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if(Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if(Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.Forward))
+                if(Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.Forward) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -73,7 +73,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.Backward))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.Backward) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -97,7 +97,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.SlideUp))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.SlideUp) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -121,7 +121,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.SlideDown))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.SlideDown) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -146,7 +146,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.SlideLeft))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.SlideLeft) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -171,7 +171,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.SlideRight))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.SlideRight) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -196,7 +196,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.RollLeft))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.RollLeft) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -216,7 +216,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.RollLeft))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.RollLeft) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -241,7 +241,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.RollRight))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.RollRight) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -261,7 +261,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.RollRight))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.RollRight) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -287,7 +287,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.YawLeft))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.YawLeft) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -308,7 +308,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.YawLeft))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.YawLeft) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -334,7 +334,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.YawRight))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.YawRight) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -355,7 +355,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.YawRight))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.YawRight) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -380,7 +380,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.PitchDown))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.PitchDown) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -400,7 +400,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.PitchDown))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.PitchDown) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -425,7 +425,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.PitchUp))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.PitchUp) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -445,7 +445,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.PitchUp))
+                if (Enable && (SpaceshipSpecs.instance.IsWithingSpecs(Direction.PitchUp) || initiator == Initiator.Gyroscope))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
