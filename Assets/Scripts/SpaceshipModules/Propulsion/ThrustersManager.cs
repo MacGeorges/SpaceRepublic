@@ -43,13 +43,13 @@ public class ThrustersManager : MonoBehaviour
 
         thrusterPositions.Add(Position.rear);
 
-        Actuator tmpAct = new Actuator(initiator, Direction.backward, Force);
+        Actuator tmpAct = new Actuator(initiator, Direction.Backward, Force);
 
         foreach (Thruster tmpThruster in thrusters)
         {
             if(Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if(Enable)
+                if(Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.Forward))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -67,13 +67,13 @@ public class ThrustersManager : MonoBehaviour
 
         thrusterPositions.Add(Position.front);
 
-        Actuator tmpAct = new Actuator(initiator, Direction.forward, Force);
+        Actuator tmpAct = new Actuator(initiator, Direction.Forward, Force);
 
         foreach (Thruster tmpThruster in thrusters)
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.Backward))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -97,7 +97,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.SlideUp))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -121,7 +121,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.SlideDown))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -146,7 +146,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.SlideLeft))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -160,8 +160,6 @@ public class ThrustersManager : MonoBehaviour
 
     public void ThrustersSlideRight(Initiator initiator, bool Enable, float Force)
     {
-        //Debug.Log(Enable + " ThrustersSlideRight " + initiator);
-
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.tip);
@@ -173,7 +171,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.SlideRight))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -198,7 +196,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.RollLeft))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -218,7 +216,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.RollLeft))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -243,7 +241,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.RollRight))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -263,7 +261,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.RollRight))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -289,7 +287,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.YawLeft))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -310,7 +308,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.YawLeft))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -336,7 +334,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.YawRight))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -357,7 +355,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.YawRight))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -369,20 +367,20 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersPinchDown(Initiator initiator, bool Enable, float Force)
+    public void ThrustersPitchDown(Initiator initiator, bool Enable, float Force)
     {
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.top);
         thrusterPositions.Add(Position.forward);
 
-        Actuator tmpAct = new Actuator(initiator, Direction.PinchDown, Force);
+        Actuator tmpAct = new Actuator(initiator, Direction.PitchDown, Force);
 
         foreach (Thruster tmpThruster in thrusters)
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.PitchDown))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -402,7 +400,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.PitchDown))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -414,20 +412,20 @@ public class ThrustersManager : MonoBehaviour
         }
     }
 
-    public void ThrustersPinchUp(Initiator initiator, bool Enable, float Force)
+    public void ThrustersPitchUp(Initiator initiator, bool Enable, float Force)
     {
         List<Position> thrusterPositions = new List<Position>();
 
         thrusterPositions.Add(Position.forward);
         thrusterPositions.Add(Position.bottom);
 
-        Actuator tmpAct = new Actuator(initiator, Direction.PinchUp, Force);     
+        Actuator tmpAct = new Actuator(initiator, Direction.PitchUp, Force);     
 
         foreach (Thruster tmpThruster in thrusters)
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.PitchUp))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }
@@ -447,7 +445,7 @@ public class ThrustersManager : MonoBehaviour
         {
             if (Utility.ContainsAllPositions(tmpThruster.thrusterPositions, thrusterPositions))
             {
-                if (Enable)
+                if (Enable && SpaceshipSpecs.instance.IsWithingSpecs(Direction.PitchUp))
                 {
                     tmpThruster.AddActuator(tmpAct);
                 }

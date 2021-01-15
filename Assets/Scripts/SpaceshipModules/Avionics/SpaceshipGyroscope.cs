@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class SpaceshipGyroscope : MonoBehaviour
 {
     private Vector3 lastPosition;
@@ -12,13 +13,10 @@ public class SpaceshipGyroscope : MonoBehaviour
 
     public bool lockedMode;
 
-    public static SpaceshipGyroscope instance;
-
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     void Start()
     {
-        instance = this;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -113,20 +111,20 @@ public class SpaceshipGyroscope : MonoBehaviour
         //rotation
         if (!SpaceshipControls.instance.pinchDown && !SpaceshipControls.instance.pinchUp)
         {
-            ThrustersManager.instance.ThrustersPinchDown(Initiator.Gyroscope, (localAngularVelocity.x < -stabilizationThreshold), Mathf.Abs(localAngularVelocity.x) * 10); //PinchUp
+            ThrustersManager.instance.ThrustersPitchDown(Initiator.Gyroscope, (localAngularVelocity.x < -stabilizationThreshold), Mathf.Abs(localAngularVelocity.x) * 10); //PinchUp
         }
         else
         {
-            ThrustersManager.instance.ThrustersPinchDown(Initiator.Gyroscope, false, 0);
+            ThrustersManager.instance.ThrustersPitchDown(Initiator.Gyroscope, false, 0);
         }
 
         if (!SpaceshipControls.instance.pinchUp && !SpaceshipControls.instance.pinchDown)
         {
-            ThrustersManager.instance.ThrustersPinchUp(Initiator.Gyroscope, (localAngularVelocity.x > stabilizationThreshold), Mathf.Abs(localAngularVelocity.x) * 10); //PinchDown
+            ThrustersManager.instance.ThrustersPitchUp(Initiator.Gyroscope, (localAngularVelocity.x > stabilizationThreshold), Mathf.Abs(localAngularVelocity.x) * 10); //PinchDown
         }
         else
         {
-            ThrustersManager.instance.ThrustersPinchUp(Initiator.Gyroscope, false, 0);
+            ThrustersManager.instance.ThrustersPitchUp(Initiator.Gyroscope, false, 0);
         }
 
         if (!SpaceshipControls.instance.yawRight && !SpaceshipControls.instance.yawLeft)

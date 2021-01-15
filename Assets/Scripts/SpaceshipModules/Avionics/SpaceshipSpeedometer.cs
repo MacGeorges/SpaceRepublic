@@ -17,6 +17,6 @@ public class SpaceshipSpeedometer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSpeed = rb.velocity.x + rb.velocity.y + rb.velocity.z;
+        currentSpeed = Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.y) + Mathf.Abs(rb.velocity.z);
     }
 }

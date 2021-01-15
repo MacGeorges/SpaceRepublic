@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum Direction { forward, backward, SlideUp, SlideDown, SlideLeft, SlideRight, RollLeft, RollRight, YawLeft, YawRight, PinchUp, PinchDown}
+public enum Direction { Forward, Backward, SlideUp, SlideDown, SlideLeft, SlideRight, RollLeft, RollRight, YawLeft, YawRight, PitchUp, PitchDown}
 
 public class SpaceshipControls : MonoBehaviour
 {
@@ -86,8 +86,8 @@ public class SpaceshipControls : MonoBehaviour
     {
         //GetComponent<Rigidbody>().isKinematic = context.ReadValueAsButton();
 
-        //SpaceshipGyroscope.instance.lockedMode = context.ReadValueAsButton();
-        SpaceshipGyroscope.instance.ToggleLockedMode();
+        //SpaceshipAvionicsManager.instance.gyroscope.lockedMode = context.ReadValueAsButton();
+        SpaceshipAvionicsManager.instance.gyroscope.ToggleLockedMode();
     }
 
     public void Boost(InputAction.CallbackContext context)
@@ -155,7 +155,7 @@ public class SpaceshipControls : MonoBehaviour
 
     private void Update()
     {
-        //if (SpaceshipGyroscope.instance.lockedMode)
+        //if (SpaceshipAvionicsManager.instance.gyroscope.lockedMode)
         //{
         //    return;
         //}
@@ -174,16 +174,14 @@ public class SpaceshipControls : MonoBehaviour
         }
 
         //Mouse
-        Debug.Log("Mouse Force X : " + Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
-        Debug.Log("Mouse Force Y : " + Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
-        //Debug.Log("Mouse Force X : " + Mathf.Abs(mousePosition.x - Screen.width / 2));
-        //Debug.Log("Mouse Force Y : " + Mathf.Abs(mousePosition.y - Screen.height / 2));
+        //Debug.Log("Mouse Force X : " + Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
+        //Debug.Log("Mouse Force Y : " + Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
         if (Mouse)
         { 
             thrustersManager.ThrustersYawLeft(Initiator.User, yawLeft, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
             thrustersManager.ThrustersYawRight(Initiator.User, yawRight, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
-            thrustersManager.ThrustersPinchDown(Initiator.User, pinchDown, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
-            thrustersManager.ThrustersPinchUp(Initiator.User, pinchUp, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
+            thrustersManager.ThrustersPitchDown(Initiator.User, pinchDown, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
+            thrustersManager.ThrustersPitchUp(Initiator.User, pinchUp, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
 
             //Mouse Wheel
             if (mouseWheel.y > 0)
