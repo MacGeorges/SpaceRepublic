@@ -112,14 +112,7 @@ public class Thruster : MonoBehaviour
 
         foreach (Actuator tmpAct in actuators)
         {
-            if (tmpAct.initiator == Initiator.Gyroscope)
-            {
-                returnForce += tmpAct.force;
-            }
-            if (tmpAct.initiator == Initiator.User)
-            {
-                returnForce += (tmpAct.force * SpaceshipControls.instance.speedLimit);
-            }
+            returnForce += tmpAct.force;
         }
 
         returnForce *= thrusterForce;
