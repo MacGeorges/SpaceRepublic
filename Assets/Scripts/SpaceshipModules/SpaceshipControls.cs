@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public enum Direction { Forward, Backward, SlideUp, SlideDown, SlideLeft, SlideRight, RollLeft, RollRight, YawLeft, YawRight, PitchUp, PitchDown}
+public struct SpaceshipTarget
+{
+    public Direction direction;
+    public float delta;
+    public float speed;
+}
 
 public class SpaceshipControls : MonoBehaviour
 {
@@ -34,6 +40,8 @@ public class SpaceshipControls : MonoBehaviour
 
     public Vector2 mousePosition;
     public Vector2 mouseWheel;
+
+    public SpaceshipTarget currentTarget;
 
     public static SpaceshipControls instance;
 
@@ -106,20 +114,23 @@ public class SpaceshipControls : MonoBehaviour
         mouseWheel = context.ReadValue<Vector2>();
     }
 
-    private void ClearMouseInputs()
-    {
-        yawLeft = false;
-        yawRight = false;
-        pinchDown = false;
-        pinchUp = false;
-    }
+    //private void ClearMouseInputs()
+    //{
+    //    yawLeft = false;
+    //    yawRight = false;
+    //    pinchDown = false;
+    //    pinchUp = false;
+    //}
 
     private void MouseInput()
     {
 
         float CursorDistance = Vector2.Distance(UIManager.instance.cursor.transform.position, new Vector2(Screen.width / 2, Screen.height / 2));
 
-        ClearMouseInputs();
+        currentTarget = new SpaceshipTarget();
+        currentTarget.delta = CursorDistance;
+
+        //ClearMouseInputs();
 
         if (CursorDistance > deadZone)
         {
@@ -128,25 +139,33 @@ public class SpaceshipControls : MonoBehaviour
             if (mousePosition.x < ((Screen.width / 2) - deadZone))
             {
                 //Debug.Log("left");
-                yawLeft = true;
+                //yawLeft = true;
+                currentTarget.direction = Direction.YawLeft;
+                currentTarget.speed = SpaceshipSpecs.instance.MaxYawSpeed * CursorDistance;
             }
 
             if (mousePosition.x > ((Screen.width / 2) + deadZone))
             {
                 //Debug.Log("right");
-                yawRight = true;
+                //yawRight = true;
+                currentTarget.direction = Direction.YawRight;
+                currentTarget.speed = SpaceshipSpecs.instance.MaxYawSpeed * CursorDistance;
             }
 
             if (mousePosition.y < ((Screen.height / 2) - deadZone))
             {
                 //Debug.Log("down");
-                pinchDown = true;
+                //pinchDown = true;
+                currentTarget.direction = Direction.PitchDown;
+                currentTarget.speed = SpaceshipSpecs.instance.MaxPitchSpeed * CursorDistance;
             }
 
             if (mousePosition.y > ((Screen.height / 2) + deadZone))
             {
                 //Debug.Log("up");
-                pinchUp = true;
+                //pinchUp = true;
+                currentTarget.direction = Direction.PitchUp;
+                currentTarget.speed = SpaceshipSpecs.instance.MaxPitchSpeed * CursorDistance;
             }
 
             //Debug.Log("=========================");
@@ -176,7 +195,7 @@ public class SpaceshipControls : MonoBehaviour
         //Mouse
         //Debug.Log("Mouse Force X : " + Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
         //Debug.Log("Mouse Force Y : " + Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
-        if (Mouse)
+        if (Mouse && !SpaceshipAvionicsManager.instance.gyroscope.lockedMode)
         { 
             thrustersManager.ThrustersYawLeft(Initiator.User, yawLeft, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
             thrustersManager.ThrustersYawRight(Initiator.User, yawRight, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
@@ -196,6 +215,28 @@ public class SpaceshipControls : MonoBehaviour
             }
 
             UIManager.instance.speedLimiter.value = speedLimit;
+        }
+
+        if (Mouse && SpaceshipAvionicsManager.instance.gyroscope.lockedMode)
+        {
+            //thrustersManager.ThrustersYawLeft(Initiator.User, yawLeft, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
+            //thrustersManager.ThrustersYawRight(Initiator.User, yawRight, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
+            //thrustersManager.ThrustersPitchDown(Initiator.User, pinchDown, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
+            //thrustersManager.ThrustersPitchUp(Initiator.User, pinchUp, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
+
+            ////Mouse Wheel
+            //if (mouseWheel.y > 0)
+            //{
+            //    speedLimit += 0.1f;
+            //    if (speedLimit > 1) { speedLimit = 1; }
+            //}
+            //if (mouseWheel.y < 0)
+            //{
+            //    speedLimit -= 0.1f;
+            //    if (speedLimit < 0) { speedLimit = 0; }
+            //}
+
+            //UIManager.instance.speedLimiter.value = speedLimit;
         }
     }
 }
