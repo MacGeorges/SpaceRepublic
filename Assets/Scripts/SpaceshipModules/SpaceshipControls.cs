@@ -197,10 +197,10 @@ public class SpaceshipControls : MonoBehaviour
         //Debug.Log("Mouse Force Y : " + Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
         if (Mouse && !SpaceshipAvionicsManager.instance.gyroscope.lockedMode)
         { 
-            thrustersManager.ThrustersYawLeft(Initiator.User, yawLeft, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
-            thrustersManager.ThrustersYawRight(Initiator.User, yawRight, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
-            thrustersManager.ThrustersPitchDown(Initiator.User, pinchDown, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
-            thrustersManager.ThrustersPitchUp(Initiator.User, pinchUp, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
+            thrustersManager.ThrustersYawLeft(Initiator.User, currentTarget.direction == Direction.YawLeft, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
+            thrustersManager.ThrustersYawRight(Initiator.User, currentTarget.direction == Direction.YawRight, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
+            thrustersManager.ThrustersPitchDown(Initiator.User, currentTarget.direction == Direction.PitchDown, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
+            thrustersManager.ThrustersPitchUp(Initiator.User, currentTarget.direction == Direction.PitchUp, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
 
             //Mouse Wheel
             if (mouseWheel.y > 0)
@@ -219,24 +219,17 @@ public class SpaceshipControls : MonoBehaviour
 
         if (Mouse && SpaceshipAvionicsManager.instance.gyroscope.lockedMode)
         {
-            //thrustersManager.ThrustersYawLeft(Initiator.User, yawLeft, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
-            //thrustersManager.ThrustersYawRight(Initiator.User, yawRight, Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
-            //thrustersManager.ThrustersPitchDown(Initiator.User, pinchDown, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
-            //thrustersManager.ThrustersPitchUp(Initiator.User, pinchUp, Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
-
-            ////Mouse Wheel
-            //if (mouseWheel.y > 0)
-            //{
-            //    speedLimit += 0.1f;
-            //    if (speedLimit > 1) { speedLimit = 1; }
-            //}
-            //if (mouseWheel.y < 0)
-            //{
-            //    speedLimit -= 0.1f;
-            //    if (speedLimit < 0) { speedLimit = 0; }
-            //}
-
-            //UIManager.instance.speedLimiter.value = speedLimit;
+            switch (currentTarget.direction)
+            {
+                case Direction.YawLeft:
+                    break;
+                case Direction.YawRight:
+                    break;
+                case Direction.PitchDown:
+                    break;
+                case Direction.PitchUp:
+                    break;
+            }
         }
     }
 }

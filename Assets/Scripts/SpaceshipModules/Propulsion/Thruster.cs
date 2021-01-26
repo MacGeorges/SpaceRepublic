@@ -45,23 +45,15 @@ public class Thruster : MonoBehaviour
 
         return;
 
-        if (actuators.FindAll(a => a.direction == addingActuator.direction).Count == 0)//!actuators.Contains(addingActuator))
+        if (actuators.FindAll(a => a.direction == addingActuator.direction).Count == 0)
         {
             actuators.Add(addingActuator);
-            //GetComponentInChildren<MeshRenderer>().material = thrusterFireMaterial;
-            //constantForceComponent.relativeForce = new Vector3(0, 0, -1);
         }
     }
 
     public void RemoveActuator(Actuator removingActuator)
     {
         actuators.RemoveAll(a => a.direction == removingActuator.direction && a.initiator == removingActuator.initiator);
-
-        //if (actuators.Count == 0)
-        //{
-        //    GetComponentInChildren<MeshRenderer>().material = thrusterMaterial;
-        //    constantForceComponent.relativeForce = Vector3.zero;
-        //}
     }
 
     void Update()
@@ -81,29 +73,6 @@ public class Thruster : MonoBehaviour
             GetComponentInChildren<MeshRenderer>().material = thrusterFireMaterial;
             constantForceComponent.relativeForce = new Vector3(0, 0, -GetForce());
         }
-
-
-        return;
-
-        nbActuators = actuators.Count;
-
-        //constantForceComponent.relativeForce = new Vector3(0, 0,
-        //    -1 * thrusterForce * GetForce() * SpaceshipControls.instance.speedLimit);
-
-        constantForceComponent.relativeForce = new Vector3(0, 0, -1 * GetForce());
-
-        if (debug)
-        {
-            Debug.Log("force : " + GetForce());
-            Debug.Log("Thruster force : " + constantForceComponent.relativeForce.z);
-            Debug.Log("=========================================");
-        }
-
-        //debugText.text = constantForceComponent.relativeForce.z.ToString("F2");
-
-        //float tmpScale = Mathf.Clamp(1 + Mathf.Abs(constantForceComponent.relativeForce.z), 1, 2);
-        //transform.localScale = new Vector3 (tmpScale, tmpScale, tmpScale);
-
     }
 
     private float GetForce()
