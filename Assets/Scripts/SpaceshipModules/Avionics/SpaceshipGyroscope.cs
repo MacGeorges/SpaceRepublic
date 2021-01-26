@@ -5,9 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class SpaceshipGyroscope : MonoBehaviour
 {
-    private Vector3 lastPosition;
-    private Vector3 lastWorldPosition;
-    private Vector3 lastRotation;
+    public Vector3 localVelocity;
+    public Vector3 localAngularVelocity;
 
     public float stabilizationThreshold;
 
@@ -23,6 +22,9 @@ public class SpaceshipGyroscope : MonoBehaviour
     void FixedUpdate()
     {
         //Debug.Log("Local Velocity : " + transform.InverseTransformDirection(rb.velocity).x);
+
+        localVelocity = transform.InverseTransformDirection(rb.velocity);
+        localAngularVelocity = transform.InverseTransformDirection(rb.angularVelocity);
 
         if (lockedMode)
         {
@@ -50,9 +52,6 @@ public class SpaceshipGyroscope : MonoBehaviour
 
     private void Stabilize()
     {
-        Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
-        Vector3 localAngularVelocity = transform.InverseTransformDirection(rb.angularVelocity);
-
         //position
         if (!SpaceshipControls.instance.leftButton && !SpaceshipControls.instance.rightButton)
         {
