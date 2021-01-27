@@ -130,7 +130,7 @@ public class SpaceshipControls : MonoBehaviour
 
         currentTarget = new SpaceshipTarget();
         currentTarget.directions = new List<Direction>();
-        currentTarget.delta = CursorDistance;
+        currentTarget.delta = CursorDistance / 100;
 
         ClearMouseInputs();
 
@@ -249,13 +249,13 @@ public class SpaceshipControls : MonoBehaviour
                 if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.y > currentTarget.speed)
                 {
                     Debug.Log("YawLeft >");
-                    thrustersManager.ThrustersYawRight(Initiator.User, currentTarget.directions.Contains(Direction.YawRight), currentTarget.delta * 2);
+                    thrustersManager.ThrustersYawRight(Initiator.User, currentTarget.directions.Contains(Direction.YawRight), currentTarget.delta);
                     thrustersManager.ThrustersYawLeft(Initiator.User, false, 0);
                 }
                 else if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.y < currentTarget.speed)
                 {
                     Debug.Log("YawLeft <");
-                    thrustersManager.ThrustersYawLeft(Initiator.User, currentTarget.directions.Contains(Direction.YawLeft), currentTarget.delta * 2);
+                    thrustersManager.ThrustersYawLeft(Initiator.User, currentTarget.directions.Contains(Direction.YawLeft), currentTarget.delta);
                     thrustersManager.ThrustersYawRight(Initiator.User, false, 0);
                 }
                 else
@@ -270,13 +270,13 @@ public class SpaceshipControls : MonoBehaviour
                 if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.y > currentTarget.speed)
                 {
                     Debug.Log("YawRight >");
-                    thrustersManager.ThrustersYawLeft(Initiator.User, currentTarget.directions.Contains(Direction.YawLeft), currentTarget.delta * 2);
+                    thrustersManager.ThrustersYawLeft(Initiator.User, currentTarget.directions.Contains(Direction.YawLeft), currentTarget.delta);
                     thrustersManager.ThrustersYawRight(Initiator.User, false, 0);
                 }
                 else if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.y < currentTarget.speed)
                 {
                     Debug.Log("YawRight <");
-                    thrustersManager.ThrustersYawRight(Initiator.User, currentTarget.directions.Contains(Direction.YawRight), currentTarget.delta * 2);
+                    thrustersManager.ThrustersYawRight(Initiator.User, currentTarget.directions.Contains(Direction.YawRight), currentTarget.delta);
                     thrustersManager.ThrustersYawLeft(Initiator.User, false, 0);
                 }
                 else
@@ -291,13 +291,13 @@ public class SpaceshipControls : MonoBehaviour
                 if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x > currentTarget.speed)
                 {
                     Debug.Log("PitchDown >");
-                    thrustersManager.ThrustersPitchUp(Initiator.User, currentTarget.directions.Contains(Direction.PitchUp), currentTarget.delta * 2);
+                    thrustersManager.ThrustersPitchUp(Initiator.User, currentTarget.directions.Contains(Direction.PitchUp), currentTarget.delta);
                     thrustersManager.ThrustersPitchDown(Initiator.User, false, 0);
                 }
                 else if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x < currentTarget.speed)
                 {
                     Debug.Log("PitchDown <");
-                    thrustersManager.ThrustersPitchDown(Initiator.User, currentTarget.directions.Contains(Direction.PitchDown), currentTarget.delta * 2);
+                    thrustersManager.ThrustersPitchDown(Initiator.User, currentTarget.directions.Contains(Direction.PitchDown), currentTarget.delta);
                     thrustersManager.ThrustersPitchUp(Initiator.User, false, 0);
                 }
                 else
@@ -312,13 +312,13 @@ public class SpaceshipControls : MonoBehaviour
                 if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x > currentTarget.speed)
                 {
                     Debug.Log("PitchUp >");
-                    thrustersManager.ThrustersPitchDown(Initiator.User, currentTarget.directions.Contains(Direction.PitchDown), currentTarget.delta * 2);
+                    thrustersManager.ThrustersPitchDown(Initiator.User, currentTarget.directions.Contains(Direction.PitchDown), currentTarget.delta);
                     thrustersManager.ThrustersPitchUp(Initiator.User, false, 0);
                 }
                 else if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x < currentTarget.speed)
                 {
                     Debug.Log("PitchUp <");
-                    thrustersManager.ThrustersPitchUp(Initiator.User, currentTarget.directions.Contains(Direction.PitchUp), currentTarget.delta * 2);
+                    thrustersManager.ThrustersPitchUp(Initiator.User, currentTarget.directions.Contains(Direction.PitchUp), currentTarget.delta);
                     thrustersManager.ThrustersPitchDown(Initiator.User, false, 0);
                 }
                 else
