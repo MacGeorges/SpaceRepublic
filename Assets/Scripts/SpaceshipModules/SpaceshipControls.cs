@@ -230,6 +230,19 @@ public class SpaceshipControls : MonoBehaviour
                 Debug.Log("Current target direction = " + tmpDir);
             }
 
+            //thrustersManager.ThrustersYawLeft
+            //    (Initiator.User,
+            //    currentTarget.directions.Contains(Direction.YawLeft),
+            //    Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
+
+            //thrustersManager.ThrustersYawRight(Initiator.User, currentTarget.directions.Contains(Direction.YawRight), Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
+            //thrustersManager.ThrustersPitchDown(Initiator.User, currentTarget.directions.Contains(Direction.PitchDown), Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
+            //thrustersManager.ThrustersPitchUp(Initiator.User, currentTarget.directions.Contains(Direction.PitchUp), Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
+            
+            thrustersManager.ThrustersYawLeft(Initiator.User, false, 0);
+            thrustersManager.ThrustersYawRight(Initiator.User, false, 0);
+            thrustersManager.ThrustersPitchDown(Initiator.User, false, 0);
+            thrustersManager.ThrustersPitchUp(Initiator.User, false, 0);
 
             if (currentTarget.directions.Contains(Direction.YawLeft))
                 {

@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public Transform cursor;
     public Text speedometer;
     public Slider speedLimiter;
+    public Text lockUnlock;
 
     public static UIManager instance;
 
@@ -21,5 +22,6 @@ public class UIManager : MonoBehaviour
     {
         cursor.transform.position = SpaceshipControls.instance.mousePosition;
         speedometer.text = Mathf.Abs(SpaceshipAvionicsManager.instance.speedometer.currentSpeed).ToString("F0");
+        lockUnlock.text = SpaceshipAvionicsManager.instance.gyroscope.lockedMode ? "L" : "U";
     }
 }
