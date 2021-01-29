@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Region\Region.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\SpaceshipAvionicsManager.cs" />
+    <Compile Include="Assets\Scripts\SpaceshipCameraManager.cs" />
     <Compile Include="Assets\Scripts\SpaceshipModules\Avionics\SpaceshipGyroscope.cs" />
     <Compile Include="Assets\Scripts\SpaceshipModules\Avionics\SpaceshipSpeedometer.cs" />
     <Compile Include="Assets\Scripts\SpaceshipModules\Propulsion\Actuator.cs" />
