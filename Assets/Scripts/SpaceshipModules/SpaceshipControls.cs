@@ -48,6 +48,8 @@ public class SpaceshipControls : MonoBehaviour
     private void Start()
     {
         instance = this;
+
+        MouseInput();
     }
 
     public void Forward(InputAction.CallbackContext context)
@@ -125,12 +127,11 @@ public class SpaceshipControls : MonoBehaviour
 
     private void MouseInput()
     {
-
         float CursorDistance = Vector2.Distance(UIManager.instance.cursor.transform.position, new Vector2(Screen.width / 2, Screen.height / 2));
 
         currentTarget = new SpaceshipTarget();
         currentTarget.directions = new List<Direction>();
-        currentTarget.delta = CursorDistance / 100;
+        currentTarget.delta = CursorDistance;
 
         ClearMouseInputs();
 
@@ -143,7 +144,7 @@ public class SpaceshipControls : MonoBehaviour
                 //Debug.Log("left");
                 yawLeft = true;
                 currentTarget.directions.Add(Direction.YawLeft);
-                currentTarget.speed = SpaceshipSpecs.instance.MaxYawSpeed * CursorDistance;
+                currentTarget.speed = SpaceshipSpecs.instance.MaxYawSpeed * ((currentTarget.delta / Screen.width) * 2);
             }
 
             if (mousePosition.x > ((Screen.width / 2) + deadZone))
@@ -151,7 +152,7 @@ public class SpaceshipControls : MonoBehaviour
                 //Debug.Log("right");
                 yawRight = true;
                 currentTarget.directions.Add(Direction.YawRight);
-                currentTarget.speed = SpaceshipSpecs.instance.MaxYawSpeed * CursorDistance;
+                currentTarget.speed = SpaceshipSpecs.instance.MaxYawSpeed * ((currentTarget.delta / Screen.width) * 2);
             }
 
             if (mousePosition.y < ((Screen.height / 2) - deadZone))
@@ -159,7 +160,7 @@ public class SpaceshipControls : MonoBehaviour
                 //Debug.Log("down");
                 pinchDown = true;
                 currentTarget.directions.Add(Direction.PitchDown);
-                currentTarget.speed = SpaceshipSpecs.instance.MaxPitchSpeed * CursorDistance;
+                currentTarget.speed = SpaceshipSpecs.instance.MaxPitchSpeed * ((currentTarget.delta / Screen.height) * 2);
             }
 
             if (mousePosition.y > ((Screen.height / 2) + deadZone))
@@ -167,7 +168,7 @@ public class SpaceshipControls : MonoBehaviour
                 //Debug.Log("up");
                 pinchUp = true;
                 currentTarget.directions.Add(Direction.PitchUp);
-                currentTarget.speed = SpaceshipSpecs.instance.MaxPitchSpeed * CursorDistance;
+                currentTarget.speed = SpaceshipSpecs.instance.MaxPitchSpeed * ((currentTarget.delta / Screen.height) * 2);
             }
 
             //Debug.Log("=========================");
@@ -224,11 +225,15 @@ public class SpaceshipControls : MonoBehaviour
 
         if (Mouse && SpaceshipAvionicsManager.instance.gyroscope.lockedMode)
         {
-            Debug.Log("Current target Speed = " + currentTarget.speed);
-            foreach(Direction tmpDir in currentTarget.directions)
-            {
-                Debug.Log("Current target direction = " + tmpDir);
-            }
+            //Debug.Log("Current target Speed = " + currentTarget.speed);
+
+            //foreach(Direction tmpDir in currentTarget.directions)
+            //{
+            //    Debug.Log("Current target direction = " + tmpDir);
+            //}
+
+            Debug.Log("current speed " + SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x);
+            Debug.Log("target speed " + currentTarget.speed);
 
             //thrustersManager.ThrustersYawLeft
             //    (Initiator.User,
@@ -238,29 +243,29 @@ public class SpaceshipControls : MonoBehaviour
             //thrustersManager.ThrustersYawRight(Initiator.User, currentTarget.directions.Contains(Direction.YawRight), Mathf.Abs(((mousePosition.x / Screen.width) - 0.5f)) * 2);
             //thrustersManager.ThrustersPitchDown(Initiator.User, currentTarget.directions.Contains(Direction.PitchDown), Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
             //thrustersManager.ThrustersPitchUp(Initiator.User, currentTarget.directions.Contains(Direction.PitchUp), Mathf.Abs(((mousePosition.y / Screen.height) - 0.5f)) * 2);
-            
+
             thrustersManager.ThrustersYawLeft(Initiator.User, false, 0);
             thrustersManager.ThrustersYawRight(Initiator.User, false, 0);
             thrustersManager.ThrustersPitchDown(Initiator.User, false, 0);
             thrustersManager.ThrustersPitchUp(Initiator.User, false, 0);
 
             if (currentTarget.directions.Contains(Direction.YawLeft))
-                {
+            {
                 if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.y > currentTarget.speed)
                 {
-                    Debug.Log("YawLeft >");
+                    //Debug.Log("YawLeft >");
                     thrustersManager.ThrustersYawRight(Initiator.User, currentTarget.directions.Contains(Direction.YawRight), currentTarget.delta);
                     thrustersManager.ThrustersYawLeft(Initiator.User, false, 0);
                 }
                 else if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.y < currentTarget.speed)
                 {
-                    Debug.Log("YawLeft <");
+                    //Debug.Log("YawLeft <");
                     thrustersManager.ThrustersYawLeft(Initiator.User, currentTarget.directions.Contains(Direction.YawLeft), currentTarget.delta);
                     thrustersManager.ThrustersYawRight(Initiator.User, false, 0);
                 }
                 else
                 {
-                    Debug.Log("Hum YawLeft");
+                    //Debug.Log("Hum YawLeft");
                     thrustersManager.ThrustersYawLeft(Initiator.User, false, 0);
                     thrustersManager.ThrustersYawRight(Initiator.User, false, 0);
                 }
@@ -269,29 +274,42 @@ public class SpaceshipControls : MonoBehaviour
             {
                 if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.y > currentTarget.speed)
                 {
-                    Debug.Log("YawRight >");
+                    //Debug.Log("YawRight >");
                     thrustersManager.ThrustersYawLeft(Initiator.User, currentTarget.directions.Contains(Direction.YawLeft), currentTarget.delta);
                     thrustersManager.ThrustersYawRight(Initiator.User, false, 0);
                 }
                 else if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.y < currentTarget.speed)
                 {
-                    Debug.Log("YawRight <");
+                    //Debug.Log("YawRight <");
                     thrustersManager.ThrustersYawRight(Initiator.User, currentTarget.directions.Contains(Direction.YawRight), currentTarget.delta);
                     thrustersManager.ThrustersYawLeft(Initiator.User, false, 0);
                 }
                 else
                 {
-                    Debug.Log("Hum YawRight");
+                    //Debug.Log("Hum YawRight");
                     thrustersManager.ThrustersYawLeft(Initiator.User, false, 0);
                     thrustersManager.ThrustersYawRight(Initiator.User, false, 0);
                 }
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
             if (currentTarget.directions.Contains(Direction.PitchDown))
             {
                 if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x > currentTarget.speed)
                 {
                     Debug.Log("PitchDown >");
-                    thrustersManager.ThrustersPitchUp(Initiator.User, currentTarget.directions.Contains(Direction.PitchUp), currentTarget.delta);
+                    thrustersManager.ThrustersPitchUp(Initiator.User, currentTarget.directions.Contains(Direction.PitchDown), currentTarget.delta);
                     thrustersManager.ThrustersPitchDown(Initiator.User, false, 0);
                 }
                 else if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x < currentTarget.speed)
@@ -307,15 +325,16 @@ public class SpaceshipControls : MonoBehaviour
                     thrustersManager.ThrustersPitchDown(Initiator.User, false, 0);
                 }
             }
+
             if (currentTarget.directions.Contains(Direction.PitchUp))
             {
-                if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x > currentTarget.speed)
+                if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x < (-currentTarget.speed))
                 {
                     Debug.Log("PitchUp >");
-                    thrustersManager.ThrustersPitchDown(Initiator.User, currentTarget.directions.Contains(Direction.PitchDown), currentTarget.delta);
+                    thrustersManager.ThrustersPitchDown(Initiator.User, currentTarget.directions.Contains(Direction.PitchUp), currentTarget.delta);
                     thrustersManager.ThrustersPitchUp(Initiator.User, false, 0);
                 }
-                else if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x < currentTarget.speed)
+                else if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x > (-currentTarget.speed))
                 {
                     Debug.Log("PitchUp <");
                     thrustersManager.ThrustersPitchUp(Initiator.User, currentTarget.directions.Contains(Direction.PitchUp), currentTarget.delta);
