@@ -306,17 +306,17 @@ public class SpaceshipControls : MonoBehaviour
 
             if (currentTarget.directions.Contains(Direction.PitchDown))
             {
-                if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x > currentTarget.speed)
-                {
-                    Debug.Log("PitchDown >");
-                    thrustersManager.ThrustersPitchUp(Initiator.User, currentTarget.directions.Contains(Direction.PitchDown), currentTarget.delta);
-                    thrustersManager.ThrustersPitchDown(Initiator.User, false, 0);
-                }
-                else if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x < currentTarget.speed)
+                if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x < currentTarget.speed)
                 {
                     Debug.Log("PitchDown <");
                     thrustersManager.ThrustersPitchDown(Initiator.User, currentTarget.directions.Contains(Direction.PitchDown), currentTarget.delta);
                     thrustersManager.ThrustersPitchUp(Initiator.User, false, 0);
+                }
+                else if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x > currentTarget.speed)
+                {
+                    Debug.Log("PitchDown >");
+                    thrustersManager.ThrustersPitchUp(Initiator.User, currentTarget.directions.Contains(Direction.PitchDown), (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x - currentTarget.speed));
+                    thrustersManager.ThrustersPitchDown(Initiator.User, false, 0);
                 }
                 else
                 {
@@ -328,17 +328,17 @@ public class SpaceshipControls : MonoBehaviour
 
             if (currentTarget.directions.Contains(Direction.PitchUp))
             {
-                if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x < (-currentTarget.speed))
-                {
-                    Debug.Log("PitchUp >");
-                    thrustersManager.ThrustersPitchDown(Initiator.User, currentTarget.directions.Contains(Direction.PitchUp), currentTarget.delta);
-                    thrustersManager.ThrustersPitchUp(Initiator.User, false, 0);
-                }
-                else if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x > (-currentTarget.speed))
+                if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x > (-currentTarget.speed))
                 {
                     Debug.Log("PitchUp <");
                     thrustersManager.ThrustersPitchUp(Initiator.User, currentTarget.directions.Contains(Direction.PitchUp), currentTarget.delta);
                     thrustersManager.ThrustersPitchDown(Initiator.User, false, 0);
+                }
+                else if (SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x < (-currentTarget.speed))
+                {
+                    Debug.Log("PitchUp >");
+                    thrustersManager.ThrustersPitchDown(Initiator.User, currentTarget.directions.Contains(Direction.PitchUp), (Mathf.Abs(SpaceshipAvionicsManager.instance.gyroscope.localAngularVelocity.x) - Mathf.Abs(currentTarget.speed)));
+                    thrustersManager.ThrustersPitchUp(Initiator.User, false, 0);
                 }
                 else
                 {
